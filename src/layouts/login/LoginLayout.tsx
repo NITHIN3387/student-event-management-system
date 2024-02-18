@@ -29,7 +29,7 @@ const LoginLayout: FC = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center z-10">
+      <div className="flex justify-center items-center z-20">
         <LoginForm />
       </div>
     </div>
