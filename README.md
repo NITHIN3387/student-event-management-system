@@ -7,7 +7,6 @@ a Database Management System (DBMS) for monitoring student involvement in a wide
 
 ```tree
 student-event-management-system/
-├── public/
 ├── src/
 │ ├── app/
 │ ├── assests/
@@ -21,7 +20,6 @@ student-event-management-system/
 ├── tsconfig.json
 ```
 
-- `public/`: Contains static assets used by the application.
 - `src/`: Contains the source code of the application.
   - `app/`: Directory for the main application code.
   - `assets/`: Contains static images, icons and global styles sheet used in the application.
