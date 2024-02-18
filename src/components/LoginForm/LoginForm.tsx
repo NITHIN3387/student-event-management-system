@@ -1,11 +1,16 @@
 'use client'
 
+import HidePassword from "@/assets/icons/HidePassword";
+import ShowPassword from "@/assets/icons/ShowPassword";
 import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
 
 const LoginForm: FC = (): JSX.Element => {
   // variables to store the inputs given by the user in Login form
   const [registerNumber, setRegisterNumber] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+
+  //variable to indicate the visible status of the password
+  const [showPassword, setShowPassword] = useState<boolean>(false)
 
   // variables to indicate the error status in login form
   const [emptyRegisterNumber, setEmptyRegisterNumber] = useState<boolean>(false)
@@ -71,6 +76,7 @@ const LoginForm: FC = (): JSX.Element => {
       <form className="grid gap-3 pt-10" onSubmit={handleLogin}>
         <div className="grid gap-3">
           <label htmlFor="userId">Register Number:</label>
+
           <input
             type="text"
             className={
@@ -81,6 +87,7 @@ const LoginForm: FC = (): JSX.Element => {
             placeholder="Enter your Register Number"
             onChange={handleRegisterNumberChange}
           />
+
           {(!emptyRegisterNumber && !invalidRegisterNumber) && <p className="text-[0.8em] opacity-0">.</p>}
           {emptyRegisterNumber && <p className="text-[0.8em] text-red-500">* please enter your Register Number</p>}
           {invalidRegisterNumber && <p className="text-[0.8em] text-red-500">* Invalid Register Number</p>}
@@ -88,16 +95,24 @@ const LoginForm: FC = (): JSX.Element => {
 
         <div className="grid gap-3">
           <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            className={
-              (emptyPassword || incorrectPassword ?
-                "border-red-500 text-red-500" : "") + " border p-2 rounded-md pl-4"
-            }
-            id="password"
-            placeholder="Enter the password"
-            onChange={handlePasswordChange}
-          />
+
+          <div className="flex relative items-center">
+            <input
+              type={showPassword ? "text" : "password"}
+              className={
+                (emptyPassword || incorrectPassword ?
+                  "border-red-500 text-red-500" : "") + " border p-2 rounded-md pl-4"
+              }
+              id="password"
+              placeholder="Enter the password"
+              onChange={handlePasswordChange}
+            />
+
+            <button type="button" className="absolute right-0" onClick={(event) => setShowPassword((pre) => !pre)}>
+              {showPassword ? <HidePassword className="scale-75 bg-white"/> : <ShowPassword className="scale-75 bg-white"/>}
+            </button>
+          </div>
+          
           {(!emptyPassword && !incorrectPassword) && <p className="text-[0.8em] opacity-0">.</p>}
           {emptyPassword && <p className="text-[0.8em] text-red-500">* please enter the password</p>}
           {incorrectPassword && <p className="text-[0.8em] text-red-500">* Incorrect password</p>}

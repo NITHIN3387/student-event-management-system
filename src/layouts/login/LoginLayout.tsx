@@ -10,7 +10,7 @@ import "./loginLayout.css";
 const LoginLayout: FC = (): JSX.Element => {
   return (
     <div className="main-container grid grid-cols-2">
-      <div className="shadow absolute" />
+      <div className="shadow absolute"/>
 
       <div className="z-10 text-white flex flex-col justify-center pl-10">
         <Image
