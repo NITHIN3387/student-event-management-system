@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #3db166
+}
+
+.bg-primary-color {
+  background-color: var(--primary-color);
+}
