@@ -68,12 +68,12 @@ const LoginForm: FC = (): JSX.Element => {
 
 
   return (
-    <div className="p-10 rounded-xl w-fit bg-white">
+    <div className="lg:p-10 p-7 rounded-xl w-fit bg-white z-20">
       <header className="text-center">
-        <h1 className="text-[2em] font-semibold pb-10 border-b-2">LOGIN</h1>
+        <h1 className="text-[2em] font-semibold lg:pb-10 pb-7 border-b-2">LOGIN</h1>
       </header>
 
-      <form className="grid gap-3 pt-10" onSubmit={handleLogin}>
+      <form className="grid gap-3 lg:pt-10 pt-7" onSubmit={handleLogin}>
         <div className="grid gap-3">
           <label htmlFor="userId">Register Number:</label>
 
@@ -81,7 +81,7 @@ const LoginForm: FC = (): JSX.Element => {
             type="text"
             className={
               (emptyRegisterNumber || invalidRegisterNumber ?
-                "border-red-500 text-red-500" : "") + " border p-2 rounded-md pl-4"
+                "border-red-500 text-red-500" : "") + " border p-2 rounded-md pl-4 sm:w-[350px] w-[250px]"
             }
             id="userId"
             placeholder="Enter your Register Number"
@@ -101,7 +101,7 @@ const LoginForm: FC = (): JSX.Element => {
               type={showPassword ? "text" : "password"}
               className={
                 (emptyPassword || incorrectPassword ?
-                  "border-red-500 text-red-500" : "") + " border p-2 rounded-md pl-4"
+                  "border-red-500 text-red-500" : "") + " border p-2 rounded-md pl-4 sm:w-[350px] w-[250px]"
               }
               id="password"
               placeholder="Enter the password"
