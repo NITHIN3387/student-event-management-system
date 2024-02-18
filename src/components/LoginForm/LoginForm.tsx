@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const LoginForm: FC = (): JSX.Element => {
   return (
-    <div className="p-10 rounded-xl w-fit bg-white">
+    <div className="p-10 rounded-xl w-fit bg-white padding">
       <header className="text-center">
         <h1 className="text-[2em] font-semibold pb-10 border-b-2">LOGIN</h1>
       </header>
