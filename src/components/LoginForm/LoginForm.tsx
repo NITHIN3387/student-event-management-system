@@ -81,7 +81,7 @@ const LoginForm: FC = (): JSX.Element => {
             type="text"
             className={
               (emptyRegisterNumber || invalidRegisterNumber ?
-                "border-red-500 text-red-500" : "") + " border p-2 rounded-md pl-4 sm:w-[350px] w-[250px]"
+                "border-red-500 text-red-500" : "") + " border p-2 rounded-md pl-4 sm:w-[350px] w-[275px]"
             }
             id="userId"
             placeholder="Enter your Register Number"
@@ -101,7 +101,7 @@ const LoginForm: FC = (): JSX.Element => {
               type={showPassword ? "text" : "password"}
               className={
                 (emptyPassword || incorrectPassword ?
-                  "border-red-500 text-red-500" : "") + " border p-2 rounded-md pl-4 sm:w-[350px] w-[250px]"
+                  "border-red-500 text-red-500" : "") + " border p-2 rounded-md pl-4 sm:w-[350px] w-[275px]"
               }
               id="password"
               placeholder="Enter the password"
