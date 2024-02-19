@@ -9,8 +9,14 @@ import "./loginLayout.css";
 
 const LoginLayout: FC = (): JSX.Element => {
   return (
+<<<<<<< HEAD:src/layouts/login/LoginLayout.tsx
+    <div className="main-container grid grid-cols-2 ">
+        
+      <div className="shadow absolute" />
+=======
     <div className="main-container grid lg:grid-cols-2">
       <div className="shadow absolute"/>
+>>>>>>> 9af2c62af2fd34cdd89d19774c356342a37f0733:client/src/layouts/login/LoginLayout.tsx
 
       <div className="z-10 text-white md:flex lg:flex-col justify-center md:items-start items-center lg:pl-10 hidden lg:pt-0 pt-10">
         <Image
@@ -29,8 +35,14 @@ const LoginLayout: FC = (): JSX.Element => {
         </div>
       </div>
 
+<<<<<<< HEAD:src/layouts/login/LoginLayout.tsx
+      <div className="flex justify-center items-center z-20">
+        <LoginForm/>
+
+=======
       <div className="flex justify-center items-center">
         <LoginForm />
+>>>>>>> 9af2c62af2fd34cdd89d19774c356342a37f0733:client/src/layouts/login/LoginLayout.tsx
       </div>
     </div>
   );
