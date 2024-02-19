@@ -11,6 +11,8 @@ dbConnection.connect((error) => {
   if (error) console.error("Fail to connect the Database\n", error);
   else console.log("database connected successfully");
 })
+dbConnection.query("SELECT * FROM FACULTY",(err,res)=>console.log(res));
+
 
 const PORT: string = process.env.PORT || "4000";
 
