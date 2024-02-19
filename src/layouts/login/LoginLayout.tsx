@@ -9,7 +9,8 @@ import "./loginLayout.css";
 
 const LoginLayout: FC = (): JSX.Element => {
   return (
-    <div className="container grid grid-cols-2 ">
+    <div className="main-container grid grid-cols-2 ">
+        
       <div className="shadow absolute" />
 
       <div className="z-10 text-white flex flex-col justify-center pl-10">
@@ -30,7 +31,8 @@ const LoginLayout: FC = (): JSX.Element => {
       </div>
 
       <div className="flex justify-center items-center z-20">
-        <LoginForm />
+        <LoginForm/>
+
       </div>
     </div>
   );
