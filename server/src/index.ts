@@ -1,7 +1,9 @@
 import express from "express";
 import dotenv from "dotenv"
+import cors from "cors"
 
 import dbConnection from "./config/dbConnection";
+import authRouter from "./routes/auth.route"
 
 const app = express();
 dotenv.config()
@@ -11,6 +13,16 @@ dbConnection.connect((error) => {
   if (error) console.error("Fail to connect the Database\n", error);
   else console.log("database connected successfully");
 })
+
+cors({
+  origin: process.env.CLIENT_URL,
+  methods: 'GET, POST, PUT, DELETE',
+  credentials: true
+})
+
+app.use(express.json())
+
+app.use("/auth", authRouter)
 
 const PORT: string = process.env.PORT || "4000";
 
