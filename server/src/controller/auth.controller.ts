@@ -56,8 +56,7 @@ const userLogin: RequestHandler = async (req, res) => {
       return;
     }
 
-    const user: studentType | facultyType = result[0];
-    console.log(user)
+    const user: studentType & facultyType = result[0];
 
     // checking whether the user with given registerNumber exist or not
     if (!user) {

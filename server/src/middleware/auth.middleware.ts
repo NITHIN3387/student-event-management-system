@@ -22,7 +22,6 @@ interface facultyType {
 
 const authUser: RequestHandler = async (req, res, next) => {
   const token: string = req.cookies.token
-  
 
   if (!token) {
     res.status(404).send("User not authorized")
@@ -52,7 +51,7 @@ const authUser: RequestHandler = async (req, res, next) => {
       return;
     }
 
-    const user: studentType | facultyType = result[0];
+    const user: studentType & facultyType = result[0];
 
     if (!user) {
       res.status(401).send("unauthorized user")
