@@ -1,13 +1,12 @@
 "use client"
 
 import React, { FC, useState } from 'react'
-import StudentNavbar from './studentNavbar/StudentNavbar'
-import FacultyNavbar from './facultyNavbar/FacultyNavbar'
+import SideNavbar from '@/components/Navbars/SideNavbar/SideNavbar'
 
 const Navbar: FC = (): JSX.Element => {
   const [authUser, setAuthUser] = useState(true)
 
-  return authUser ? <StudentNavbar /> : <FacultyNavbar />
+  return authUser ? <SideNavbar /> : <SideNavbar />
 }
 
 export default Navbar
