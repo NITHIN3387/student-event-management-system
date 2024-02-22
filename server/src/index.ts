@@ -15,8 +15,6 @@ dbConnection.connect((error) => {
   else console.log("database connected successfully");
 })
 
-
-
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({

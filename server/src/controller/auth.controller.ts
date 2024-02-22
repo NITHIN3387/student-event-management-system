@@ -79,9 +79,12 @@ const userLogin: RequestHandler = async (req, res) => {
       { registerNumber: registerNumber },
       process.env.SECRETE_KEY as Secret,
       { expiresIn: "1h" }
-    );
-
-    res.cookie("token", token).status(200).send("user Login successfully");
+    );    
+    
+    res.cookie("token", token, {
+      maxAge: 3600000,
+      httpOnly: true
+    }).status(200).send("user Login successfully"); 
   });
 };
 
