@@ -90,7 +90,39 @@ const userLogin: RequestHandler = async (req, res) => {
   description: function to fetch authorized user
 */
 const getAuthUser: RequestHandler = async (req, res) => {
-  // const user = req
+  const id = (req as any).user
+
+  // checking whether user is authorized or not
+  if (!id){
+    res.status(401).send("user is unauthorized")
+    return
+  }
+
+  // query to retrive the user with Sid = id
+  const query: string = id.startsWith('4SF') ? 
+  `
+    SELECT *
+    FROM STUDENT
+    WHERE Sid = '${id}'
+  `:
+  `
+    SELECT *
+    FROM FACULTY
+    WHERE Fid = '${id}'
+  `
+
+  // retriving the user with Sid = id from db
+  dbConnection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }
+
+    const user: studentType | facultyType = result[0];
+
+    res.status(200).json(user)
+  })
 }
 
 /*
@@ -147,4 +179,4 @@ const getFacultyById: RequestHandler = async (req, res) => {
   })
 }
 
-export { userLogin, getStudentById, getFacultyById };
+export { userLogin, getStudentById, getFacultyById, getAuthUser };
