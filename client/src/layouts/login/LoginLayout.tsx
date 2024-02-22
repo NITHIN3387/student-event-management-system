@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 
-import LoginForm from "@/components/LoginForm/LoginForm";
+import LoginForm from "@/components/Forms/LoginForm/LoginForm";
 
 import sahyadriLogo from "@/assets/images/sahyadri-logo.png";
 
