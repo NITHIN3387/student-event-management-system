@@ -3,8 +3,11 @@
 import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
 import HidePassword from "@/assets/icons/HidePassword";
 import ShowPassword from "@/assets/icons/ShowPassword";
+import { useRouter } from "next/navigation";
 
 const LoginForm: FC = (): JSX.Element => {
+  const router = useRouter()
+
   // variables to store the inputs given by the user in Login form
   const [registerNumber, setRegisterNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -88,8 +91,8 @@ const LoginForm: FC = (): JSX.Element => {
       if (responce?.status === 200)
         // checking whether the login user is a faculty or student
         registerNumber.startsWith("4SF")
-          ? console.log("Student Login successfully")
-          : console.log("Faculty Login successfully");
+          ? router.replace("/student/dashboard")
+          : router.replace("/faculty/dashboardh");
     }
   };
 
