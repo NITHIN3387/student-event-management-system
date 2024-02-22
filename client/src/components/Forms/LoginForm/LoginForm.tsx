@@ -79,6 +79,7 @@ const LoginForm: FC = (): JSX.Element => {
         method: "POST",
         headers: headers,
         body: JSON.stringify(data),
+        credentials: 'include'
       }).catch((error) => console.log("internal server error\n", error));
 
       /* checking whether the responce is success or not
