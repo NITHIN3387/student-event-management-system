@@ -84,6 +84,15 @@ const userLogin: RequestHandler = async (req, res) => {
   });
 };
 
+/*/*
+  method: GET,
+  access: private,
+  description: function to fetch authorized user
+*/
+const getAuthUser: RequestHandler = async (req, res) => {
+  // const user = req
+}
+
 /*
   method: GET,
   access: public,
