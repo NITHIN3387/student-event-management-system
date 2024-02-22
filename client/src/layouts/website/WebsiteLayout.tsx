@@ -2,9 +2,9 @@ import { FC, ReactNode } from 'react'
 
 import WebsiteHeader from '@/components/Headers/WebsiteHeader/WebsiteHeader'
 import Navbar from '@/components/Navbars/WebsiteNavbar/WebsiteNavbar'
+import AuthUserProvider from '@/contexts/authUser.context'
 
 import './websiteLayout.css'
-import AuthUserProvider from '@/contexts/authUser.context'
 
 interface propsType {
   children: ReactNode
