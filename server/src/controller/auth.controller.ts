@@ -2,7 +2,12 @@ import { RequestHandler } from "express";
 import { sign, Secret } from "jsonwebtoken";
 import dbConnection from "../config/dbConnection";
 
-interface userType {
+interface data {
+  registerNumber: string,
+  password: string
+}
+
+interface studentType {
   sid?: string,
   sname?: string,
   password?: string,
@@ -12,20 +17,36 @@ interface userType {
   fid?: string | null
 }
 
+interface facultyType {
+  fid?: string,
+  fname?: string,
+  password?: string,
+  semester?: number,
+  did?: string,
+  hod?: string,
+}
+
 /*
   method: POST,
   access: public,
   description: function to handle the user login
 */
 const userLogin: RequestHandler = async (req, res) => {
-  const { registerNumber, password } = req.body;
+  const { registerNumber, password }: data = req.body;
 
   // query to retrive the user's password with Sid = registerNumber
-  const query: string = `
+  const query: string = registerNumber.startsWith('4SF') ? 
+  `
     SELECT password
     FROM STUDENT
     WHERE Sid = '${registerNumber}'
-  `;
+  `:
+  `
+    SELECT password
+    FROM FACULTY
+    WHERE Fid = '${registerNumber}'
+  `
+
 
   // retriving the user's password with Sid = registerNumber from db
   dbConnection.query(query, (error, result) => {
@@ -35,7 +56,7 @@ const userLogin: RequestHandler = async (req, res) => {
       return;
     }
 
-    const user: userType = result[0];
+    const user: studentType | facultyType = result[0];
 
     // checking whether the user with given registerNumber exist or not
     if (!user) {
@@ -63,4 +84,58 @@ const userLogin: RequestHandler = async (req, res) => {
   });
 };
 
-export { userLogin };
+/*
+  method: GET,
+  access: public,
+  description: function to fetch student details by id
+*/
+const getStudentById: RequestHandler = async (req, res) => {
+  const id: string = req.params.id 
+
+  const query: string = `
+    SELECT *
+    FROM STUDENT
+    WHERE Sid = '${id}';
+  `
+  dbConnection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }
+
+    const student: studentType = result[0]
+
+    if (!student)  res.status(404).send("student with this id not found")
+    else res.status(200).json(student)
+  })
+}
+
+/*
+  method: GET,
+  access: public,
+  description: function to fetch faculty details by id
+*/
+const getFacultyById: RequestHandler = async (req, res) => {
+  const id: string = req.params.id 
+
+  const query: string = `
+    SELECT *
+    FROM FACULTY
+    WHERE Fid = '${id}';
+  `
+  dbConnection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }
+
+    const faculty: facultyType = result[0]
+
+    if (!faculty)  res.status(404).send("faculty with this id not found")
+    else res.status(200).json(faculty)
+  })
+}
+
+export { userLogin, getStudentById, getFacultyById };
