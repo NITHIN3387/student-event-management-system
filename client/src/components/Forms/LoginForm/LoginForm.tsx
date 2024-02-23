@@ -71,7 +71,7 @@ const LoginForm: FC = (): JSX.Element => {
     if (registerNumber === "") setEmptyRegisterNumber(true);
     else if (password === "") setEmptyPassword(true);
     else {
-      const URL: string = (process.env.NEXT_PUBLIC_SERVER_URL as string) + "/auth/login";  // api url for user login
+      const URL: string = (process.env.NEXT_PUBLIC_SERVER_URL as string) + "/auth/login";  // api url for user login      
       const headers: HeadersInit = { "Content-Type": "application/json" };                 // header content for fetching data from api
       const data = { registerNumber, password };                                           // data to send through api
 

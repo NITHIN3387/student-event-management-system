@@ -11,7 +11,11 @@ const StudentNavbar: FC = (): JSX.Element => {
      width={60}
      height={60}
      />
+     <div className='flex xl:gap-[2rem] lg:gap-[1.75rem] gap-[1rem] items-center'>
+
+     </div>
     </div>
+    
   )
 }
 
