@@ -1,12 +1,37 @@
-"use client"
+"use client";
 
-import React, { FC, useState } from 'react'
-import SideNavbar from '@/components/Navbars/SideNavbar/SideNavbar'
+import React, { FC, useState } from "react";
+import SideNavbar from "@/components/Navbars/SideNavbar/SideNavbar";
+import Dashboard from "@/assets/icons/Dashboard";
+import { useAuth } from "@/contexts/authUser.context";
 
-const Navbar: FC = (): JSX.Element => {
-  const [authUser, setAuthUser] = useState(true)
-
-  return authUser ? <SideNavbar /> : <SideNavbar />
+interface NavListType {
+  label: string;
+  icon: JSX.Element;
+  link: string;
 }
 
-export default Navbar
+const StudentNavList: NavListType[] = [
+  {
+    label: "Dashboard",
+    icon: <Dashboard height={25} width={25} />,
+    link: "/student/dashboard",
+  },
+  {
+    label: "Create",
+    icon: <Dashboard height={25} width={25} />,
+    link: "/student/dashboard",
+  },
+];
+
+const Navbar: FC = (): JSX.Element => {
+  const authUser = useAuth();
+
+  return authUser?.SID?.startsWith("4SF") ? (
+    <SideNavbar navList={StudentNavList} />
+  ) : (
+    <SideNavbar />
+  );
+};
+
+export default Navbar;
