@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbars/WebsiteNavbar/WebsiteNavbar'
 import AuthUserProvider from '@/contexts/authUser.context'
 
 import './websiteLayout.css'
+import AccessAlertModel from '@/components/AccessAlertModel/AccessAlertModel'
 
 interface propsType {
   children: ReactNode
@@ -28,6 +29,7 @@ const WebsiteLayout: FC<propsType> = ({ children }): JSX.Element => {
           </div>
         </div>
       </div>
+      <AccessAlertModel/>
     </AuthUserProvider>
   )
 }
