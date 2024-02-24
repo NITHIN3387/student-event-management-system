@@ -7,30 +7,29 @@ interface propsType {
 }
 
 interface studentType {
-  sid?: string,
-  sname?: string,
-  password?: string,
-  semester?: number,
-  section?: string,
-  bid?: string,
-  fid?: string | null
+  SID?: string,
+  SNAME?: string,
+  PASSWORD?: string,
+  SEMESTER?: number,
+  SECTION?: string,
+  BID?: string,
+  FID?: string | null
 }
 
 interface facultyType {
-  fid?: string,
-  fname?: string,
-  password?: string,
-  semester?: number,
-  did?: string,
-  hod?: string,
+  FID?: string,
+  FNAME?: string,
+  PASSWORD?: string,
+  DID?: string,
+  HOD?: string,
 }
 
-const authUserContext = createContext<studentType & facultyType | null>(null)
+const authUserContext = createContext<(studentType & facultyType) | null>(null)
 
 const useAuth = () => useContext(authUserContext)
 
 const AuthUserProvider: FC<propsType> = ({ children }): JSX.Element => {
-  const [authUser, setAuthUser] = useState<studentType & facultyType | null>(null)
+  const [authUser, setAuthUser] = useState<(studentType & facultyType) | null>(null)
 
   useEffect(() => {
     const fetchAuthUser = async () => {

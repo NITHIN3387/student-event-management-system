@@ -50,7 +50,6 @@ const SideNavbar: FC = (): JSX.Element => {
           ))}
         </nav>
       </div>
-     
     </div>
   );
 };
