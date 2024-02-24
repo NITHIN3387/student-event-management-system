@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react";
 import Image from "next/image";
 import Logo from "@/assets/images/sahyadri-logo.png";
-import Dashboard from "@/components/Navbars/SideNavbar/Dashboard/Dashboard"
-import Create from "@/components/Navbars/SideNavbar/createParticipant/create"
+import Dashboard from "@/assets/icons/Dashboard"
+import Create from "@/assets/icons/CreateParticipation"
 
 interface NavListType {
   label: string;
