@@ -30,26 +30,27 @@ const SideNavbar: FC = (): JSX.Element => {
   };
 
   return (
-    <div className="hidden md:flex flex-col justify-between h-screen bg-gray-700 p-4">
-      <div>
-        <Image src={Logo} alt="logo" width={70} height={70} />
-        <nav>
+    <div className="hidden lg:flex flex-col h-screen bg-[#212529]">
+        <div className="flex justify-center items-center border-b-2 py-3 border-[#979797] gap-3">
+          <Image src={Logo} alt="logo" width={50} height={50} />
+          <span className="text-white font-bold text-xl">SAHYADRI</span>
+        </div>
+        <nav className="p-7">
           {NavList.map((item, index) => (
             <div
               key={index}
-              className={`py-2 px-4 cursor-pointer ${
+              className={`py-4 px-8 text-[1.15em] cursor-pointer rounded-md flex justify-start items-center gap-5 ${
                 activeTab === index
-                  ? "bg-gray-700 text-white gap-9" // Active tab background and font color
-                  : "bg-gray-700 text-gray-300" // Inactive tab background and font color
+                  ? "bg-[#3db166] text-white" // Active tab background and font color
+                  : "text-[#979797]" // Inactive tab background and font color
               }`}
               onClick={() => handleItemClick(index)}
             >
               {item.icon}
-              <span className="ml-2">{item.label}</span>
+              <span>{item.label}</span>
             </div>
           ))}
         </nav>
-      </div>
     </div>
   );
 };

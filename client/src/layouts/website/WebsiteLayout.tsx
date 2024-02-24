@@ -6,7 +6,7 @@ import AuthUserProvider from '@/contexts/authUser.context'
 
 import './websiteLayout.css'
 import AccessAlertModel from '@/components/AccessAlertModel/AccessAlertModel'
-import IntroLoader from '@/components/Loaders/IntroLoader'
+import IntroLoader from '@/components/Loaders/IntroLoader/IntroLoader'
 
 interface propsType {
   children: ReactNode
