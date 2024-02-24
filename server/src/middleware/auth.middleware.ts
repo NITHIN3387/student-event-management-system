@@ -21,10 +21,10 @@ interface facultyType {
 }
 
 const authUser: RequestHandler = async (req, res, next) => {
-  const token: string = req.cookies.token
+  const token: string | undefined = req.cookies.token || req.headers.authorization?.split(" ")[1]
 
   if (!token) {
-    res.status(404).send("User not authorized")
+    res.status(401).send("User not authorized")
     return
   }
 
