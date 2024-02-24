@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserProfileCapsule = () => {
   return (
-    <div>UserProfileCapsule</div>
+    <div className=' text-black py-3'>UserProfileCapsule</div>
   )
 }
 

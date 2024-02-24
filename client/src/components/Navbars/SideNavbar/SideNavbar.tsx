@@ -3,6 +3,7 @@ import Image from "next/image";
 import Logo from "@/assets/images/sahyadri-logo.png";
 import Link from "next/link";
 
+
 interface propsType {
   navList?: {
     label: string;
