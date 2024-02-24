@@ -18,12 +18,12 @@ const WebsiteLayout: FC<propsType> = ({ children }): JSX.Element => {
           <Navbar />
         </div>
 
-        <div className='grid grid-rows-[auto_1fr]'>
+        <div className='flex flex-col max-h-screen'>
           <div>
             <WebsiteHeader />
           </div>
           
-          <div>
+          <div className='bg-[#f0f2f5] p-7 grid overflow-y-scroll h-full'>
             {children}
           </div>
         </div>
