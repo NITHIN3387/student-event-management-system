@@ -1,3 +1,5 @@
+"use client"
+
 import React, { FC, useState } from "react";
 import Image from "next/image";
 import Logo from "@/assets/images/sahyadri-logo.png";
@@ -26,7 +28,7 @@ const SideNavbar: FC<propsType> = ({ navList }): JSX.Element => {
           <Link
             href={item.link}
             key={index}
-            className={`py-4 px-8 text-[1.15em] rounded-md flex justify-start items-center gap-3 ${
+            className={`p-4 text-[1.15em] rounded-md flex justify-start items-center gap-3 ${
               activeTab === index
                 ? "bg-[#3db166] text-white" // Active tab background and font color
                 : "text-[#979797]" // Inactive tab background and font color
