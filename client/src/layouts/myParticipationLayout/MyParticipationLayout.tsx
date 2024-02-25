@@ -1,3 +1,4 @@
+import ParticipationCard from '@/components/Cards/ParticipationCard/ParticipationCard'
 import React, { FC, ReactNode } from 'react'
 
 interface propsType {
@@ -11,7 +12,7 @@ const MyParticipationLayout: FC<propsType> = ({ children }): JSX.Element => {
         {children}
       </div>
       <div className='bg-white overflow-scroll p-3 rounded-lg h-full' >
-        Hello From Layout
+        <ParticipationCard />
       </div>
     </div>
   )
