@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Image from "next/image";
-import LoginLogo from "@/assets/images/login.png";
+import LoginLogo from "@/assets/images/profile.png";
 
 interface UserProfileCapsuleProps {
   userName: string;
@@ -9,19 +9,20 @@ interface UserProfileCapsuleProps {
 
 const UserProfileCapsule: FC<UserProfileCapsuleProps> = ({ userName, userType }) => {
   return (
-    <div className="flex items-center">
-      <span className="mr-2 mx-4 mb-6">{userName}</span>
-      <div className="flex-row">
-      <Image
-        src={LoginLogo}
-        height={30}
-        width={30}
-        alt="logo"
-        className=" mx-6"
-      />
-      <span className="ml-3 mx-1 my-0">{userType}</span>
+    <div className="flex items-center pr-7 pl-2 mr-2 rounded-full hover:bg-gray-400 transition-all cursor-pointer">
+      <div className="flex-shrink-0">
+        <Image
+          src={LoginLogo}
+          height={30}
+          width={30}
+          alt="logo"
+          className=""
+        />
       </div>
-      
+      <div className="ml-4">
+        <span className="font-bold block">{userName}</span>
+        <span className="text-xs text-gray-500 hover:text-gray-700 block">{userType}</span>
+      </div>
     </div>
   );
 };
