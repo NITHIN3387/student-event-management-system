@@ -26,7 +26,7 @@ const WebsiteLayout: FC<propsType> = ({ children, navList }): JSX.Element => {
 
         <div className='flex flex-col max-h-screen'>
           <div>
-            <WebsiteHeader pageTitle={children} />
+            <WebsiteHeader />
           </div>
 
           <div className='bg-[#f0f2f5] p-7 grid overflow-y-scroll h-full'>
