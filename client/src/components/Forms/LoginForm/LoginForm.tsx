@@ -4,7 +4,6 @@ import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
 import HidePassword from "@/assets/icons/HidePassword";
 import ShowPassword from "@/assets/icons/ShowPassword";
 import { useRouter } from "next/navigation";
-import UserProfileCapsule from "@/components/UserProfileCapsule/UserProfileCapsule";
 
 const LoginForm: FC = (): JSX.Element => {
   const router = useRouter()
@@ -94,7 +93,7 @@ const LoginForm: FC = (): JSX.Element => {
         // checking whether the login user is a faculty or student
         registerNumber.startsWith("4SF")
           ? router.replace("/student/dashboard")
-          : router.replace("/faculty/dashboardh");
+          : router.replace("/faculty/dashboard");
     }
   };
 

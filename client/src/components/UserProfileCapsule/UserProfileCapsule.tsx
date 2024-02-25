@@ -1,13 +1,30 @@
-import React, { FC } from "react";
+"use client"
+
+import React, { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import LoginLogo from "@/assets/images/profile.png";
+import { useAuth } from "@/contexts/authUser.context";
 
-interface UserProfileCapsuleProps {
-  userName: string | undefined;
-  userType: string;
-}
+const UserProfileCapsule: FC = () => {
+  const authUser = useAuth();
 
-const UserProfileCapsule: FC<UserProfileCapsuleProps> = ({ userName, userType }) => {
+  const [name, setName] = useState<string | undefined>("");
+  const [designation, setDesignation] = useState<string>("");
+
+  useEffect(() => {    
+    if (authUser?.SID) {
+      setName(authUser.SNAME);
+      setDesignation("Student");
+    }
+
+    if (!authUser?.SID) {
+      setName(authUser?.FNAME);
+      authUser?.HOD
+        ? setDesignation("Head of Department")
+        : setDesignation("Faculty");
+    }
+  }, [authUser]);
+
   return (
     <div className="flex items-center pl-2 pr-4 py-1 rounded-full border border-gray-500 cursor-pointer">
       <div className="flex-shrink-0 border-2 border-gray-400 rounded-full">
@@ -20,8 +37,8 @@ const UserProfileCapsule: FC<UserProfileCapsuleProps> = ({ userName, userType })
         />
       </div>
       <div className="ml-4">
-        <span className="font-bold block">{userName}</span>
-        <span className="text-xs text-gray-500 hover:text-gray-700 block">{userType}</span>
+        <span className="font-bold block">{name}</span>
+        <span className="text-xs text-gray-500 hover:text-gray-700 block">{designation}</span>
       </div>
     </div>
   );

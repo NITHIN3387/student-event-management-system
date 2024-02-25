@@ -2,16 +2,22 @@
 
 import AlertIcon from "@/assets/icons/AlertIcon";
 import { useAuth } from "@/contexts/authUser.context";
+import { usePathname } from "next/navigation";
 import React, { FC, useEffect, useState } from "react";
 
 const AccessAlertModel: FC = (): JSX.Element => {
   const [hidden, setHidden] = useState<boolean>(true);
 
   const authuser = useAuth()
+  const pathName = usePathname()
 
   useEffect(() => {
-    authuser?.SID?.startsWith("4SF") ? setHidden(true) : setHidden(false)
-  }, [authuser])
+    if (pathName.startsWith("/student"))
+      authuser?.SID?.startsWith("4SF") ? setHidden(true) : setHidden(false)
+    
+    if (pathName.startsWith("/faculty"))
+      authuser?.FID?.startsWith("FA") && !authuser.SID ? setHidden(true) : setHidden(false)
+  }, [pathName, authuser])
 
   return (
     <div
