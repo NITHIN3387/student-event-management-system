@@ -7,12 +7,13 @@ interface WebsiteHeaderProps {
 }
 
 const WebsiteHeader: FC<WebsiteHeaderProps> = ({ pageTitle }): JSX.Element => {
-  
   return (
-    <header className="bg-[#ffffff] text-black py-5 border-[#757575] gap-4">
+    <header className="bg-[#ffffff] text-black ">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-1xl font-bold">{pageTitle}</h1>
-        <UserProfileCapsule />
+        <div>{pageTitle}</div>
+        <div className="flex justify-center mt-5">
+        <UserProfileCapsule userName="John Doe" userType="Student" />
+      </div>
       </div>
     </header>
   );

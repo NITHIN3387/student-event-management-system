@@ -4,6 +4,7 @@ import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
 import HidePassword from "@/assets/icons/HidePassword";
 import ShowPassword from "@/assets/icons/ShowPassword";
 import { useRouter } from "next/navigation";
+import UserProfileCapsule from "@/components/UserProfileCapsule/UserProfileCapsule";
 
 const LoginForm: FC = (): JSX.Element => {
   const router = useRouter()
