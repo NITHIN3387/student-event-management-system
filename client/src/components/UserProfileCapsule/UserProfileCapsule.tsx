@@ -3,13 +3,13 @@ import Image from "next/image";
 import LoginLogo from "@/assets/images/profile.png";
 
 interface UserProfileCapsuleProps {
-  userName: string;
+  userName: string | undefined;
   userType: string;
 }
 
 const UserProfileCapsule: FC<UserProfileCapsuleProps> = ({ userName, userType }) => {
   return (
-    <div className="flex items-center px-2 py-1 rounded-full border border-gray-500 cursor-pointer">
+    <div className="flex items-center pl-2 pr-4 py-1 rounded-full border border-gray-500 cursor-pointer">
       <div className="flex-shrink-0 border-2 border-gray-400 rounded-full">
         <Image
           src={LoginLogo}
