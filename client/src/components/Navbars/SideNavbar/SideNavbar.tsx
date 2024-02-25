@@ -4,7 +4,7 @@ import React, { FC, useState } from "react";
 import Image from "next/image";
 import Logo from "@/assets/images/sahyadri-logo.png";
 import Link from "next/link";
-
+import WebsiteHeader from "@/components/Headers/WebsiteHeader/WebsiteHeader";
 
 interface propsType {
   navList?: {
