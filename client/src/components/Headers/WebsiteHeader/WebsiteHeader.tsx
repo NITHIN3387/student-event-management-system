@@ -11,7 +11,7 @@ const WebsiteHeader: FC<WebsiteHeaderProps> = ({ pageTitle }): JSX.Element => {
     <header className="bg-[#ffffff] text-black ">
       <div className="container mx-auto flex justify-between items-center">
         <div>{pageTitle}</div>
-        <div className="flex justify-center mt-2 mb-2">
+        <div className="flex justify-center mt-2 mb-2 ">
         <UserProfileCapsule userName="John Doe" userType="Student" />
       </div>
       </div>
