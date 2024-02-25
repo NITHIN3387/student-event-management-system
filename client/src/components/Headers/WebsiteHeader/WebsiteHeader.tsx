@@ -3,18 +3,14 @@ import React, { FC, ReactNode } from "react";
 import UserProfileCapsule from "@/components/UserProfileCapsule/UserProfileCapsule";
 
 interface WebsiteHeaderProps {
-  pageTitle: ReactNode;
+  pageTitle?: ReactNode;
 }
 
-const WebsiteHeader: FC<WebsiteHeaderProps> = ({ pageTitle }): JSX.Element => {
+const WebsiteHeader: FC<WebsiteHeaderProps> = (): JSX.Element => {
   return (
-    <header className="bg-[#ffffff] text-black ">
-      <div className="container mx-auto flex justify-between items-center">
-        <div>{pageTitle}</div>
-        <div className="flex justify-center mt-2 mb-2 ">
+    <header className="flex justify-between items-center px-7 py-3">
+        <h1 className="text-3xl font-semibold">My Participation</h1>
         <UserProfileCapsule userName="John Doe" userType="Student" />
-      </div>
-      </div>
     </header>
   );
 };

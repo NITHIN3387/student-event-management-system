@@ -9,8 +9,8 @@ interface UserProfileCapsuleProps {
 
 const UserProfileCapsule: FC<UserProfileCapsuleProps> = ({ userName, userType }) => {
   return (
-    <div className="flex items-center pr-3 pl-2 mr-4 ml-4  bg-gray-200 rounded-full border border-gray-500 cursor-pointer">
-      <div className="flex-shrink-0">
+    <div className="flex items-center px-2 py-1 rounded-full border border-gray-500 cursor-pointer">
+      <div className="flex-shrink-0 border-2 border-gray-400 rounded-full">
         <Image
           src={LoginLogo}
           height={30}

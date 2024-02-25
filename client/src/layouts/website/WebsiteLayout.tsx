@@ -1,19 +1,11 @@
 "use client"
 import { FC, ReactNode, useState } from 'react';
 import WebsiteHeader from '@/components/Headers/WebsiteHeader/WebsiteHeader';
-import Navbar from '@/components/Navbars/WebsiteNavbar/WebsiteNavbar';
+import SideNavbar from '@/components/Navbars/SideNavbar/SideNavbar';
 import AuthUserProvider from '@/contexts/authUser.context';
-import './websiteLayout.css';
 import AccessAlertModel from '@/components/AccessAlertModel/AccessAlertModel';
 import IntroLoader from '@/components/Loaders/IntroLoader/IntroLoader';
-
-import WebsiteHeader from '@/components/Headers/WebsiteHeader/WebsiteHeader'
-import SideNavbar from '@/components/Navbars/SideNavbar/SideNavbar'
-import AuthUserProvider from '@/contexts/authUser.context'
-
-import AccessAlertModel from '@/components/AccessAlertModel/AccessAlertModel'
-import IntroLoader from '@/components/Loaders/IntroLoader/IntroLoader'
-import './websiteLayout.css'
+import './websiteLayout.css';
 
 interface propsType {
   children: ReactNode,
