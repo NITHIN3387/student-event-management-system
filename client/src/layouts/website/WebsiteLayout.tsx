@@ -7,15 +7,29 @@ import './websiteLayout.css';
 import AccessAlertModel from '@/components/AccessAlertModel/AccessAlertModel';
 import IntroLoader from '@/components/Loaders/IntroLoader/IntroLoader';
 
-interface WebsiteLayoutProps {
-  children: ReactNode;
+import WebsiteHeader from '@/components/Headers/WebsiteHeader/WebsiteHeader'
+import SideNavbar from '@/components/Navbars/SideNavbar/SideNavbar'
+import AuthUserProvider from '@/contexts/authUser.context'
+
+import AccessAlertModel from '@/components/AccessAlertModel/AccessAlertModel'
+import IntroLoader from '@/components/Loaders/IntroLoader/IntroLoader'
+import './websiteLayout.css'
+
+interface propsType {
+  children: ReactNode,
+  navList?: {
+    label: string;
+    icon: JSX.Element;
+    link: string;
+  }[]
 }
-const WebsiteLayout: FC<WebsiteLayoutProps> = ({ children }): JSX.Element => {
- return (
+
+const WebsiteLayout: FC<propsType> = ({ children, navList }): JSX.Element => {
+  return (
     <AuthUserProvider>
       <div className='grid grid-cols-[auto_1fr] website-container'>
         <div>
-          <Navbar />
+          <SideNavbar navList={navList}/>
         </div>
 
         <div className='flex flex-col max-h-screen'>
