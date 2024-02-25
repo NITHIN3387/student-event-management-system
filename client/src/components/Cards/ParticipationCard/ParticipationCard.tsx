@@ -14,7 +14,7 @@ const EventHistoryCard: FC = (): JSX.Element => {
               <div>
                 <span className="font-semibold"></span> Event ABC
               </div>
-              <div className="absolute top-4 right-4 bg-blue-500 rounded-3xl text-white p-2">
+              <div className="absolute top-4 right-4 p-2  border text-black-500 border-blue-500 rounded-full cursor-pointer">
                 <Image
                   src={PendingLogo}
                   height={15}
@@ -52,15 +52,15 @@ const EventHistoryCard: FC = (): JSX.Element => {
       </div>
       
       <div className="flex justify-between items-end mt-auto">
-        <div className="flex items-center pl-4 pr-4 rounded-full  bg-yellow-500 cursor-pointer">
+        <div className="flex items-center pl-4 pr-4 rounded-full  bg-yellow-500  text-white cursor-pointer">
           Update Certificate
         </div>
         
         <div className="flex space-x-2">
-          <div className="pr-4 pl-4 ml-4 rounded-full border text-gray-500 border-gray-500 cursor-pointer">
+          <div className="pr-4 pl-4 ml-4 rounded-full border bg-green-500  text-whit cursor-pointer">
             Edit
           </div>
-          <div className="pr-4 pl-4  rounded-full border text-red-500 border-red-500 cursor-pointer">
+          <div className="pr-4 pl-4  rounded-full border bg-red-500  text-whit cursor-pointer">
             Delete
           </div>
         </div>
