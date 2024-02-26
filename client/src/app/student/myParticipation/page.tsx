@@ -2,6 +2,7 @@ import AddIcon from "@/assets/icons/AddIcone";
 import FilterIcon from "@/assets/icons/FilterIcon";
 import SearchIcon from "@/assets/icons/SearchIcon";
 import MyParticipationLayout from "@/layouts/myParticipationLayout/MyParticipationLayout";
+import Link from "next/link";
 import React, { FC } from "react";
 
 const page: FC = (): JSX.Element => {
@@ -24,10 +25,10 @@ const page: FC = (): JSX.Element => {
           </div>
         </div>
 
-        <button className="flex justify-center items-center gap-2 bg-primary-color text-white font-semibold px-2 py-1 rounded-lg">
+        <Link href="/student/myParticipation/addParticipation" className="flex justify-center items-center gap-2 bg-primary-color text-white font-semibold px-2 py-1 rounded-lg">
           <AddIcon height={35} width={35} />
           <span>Add More</span>
-        </button>
+        </Link>
       </header>
     </MyParticipationLayout>
   );

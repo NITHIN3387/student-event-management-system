@@ -10,6 +10,10 @@
   background-color: var(--primary-color);
 }
 
+.border-primary-color {
+  border-color: var(--primary-color);
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }
