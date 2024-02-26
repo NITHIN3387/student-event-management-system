@@ -44,7 +44,18 @@ const EventHistoryCard: FC = (): JSX.Element => {
                     alt="logo"
                     className="inline"
                   />
-                </span> 2022-02-28
+                </span> Start Date: 2022-02-28
+              </div>
+              <div>
+                <span className="font-semibold">
+                  <Image
+                    src={DateLogo}
+                    height={10}
+                    width={20}
+                    alt="logo"
+                    className="inline"
+                  />
+                </span> Due Date: 2022-03-05
               </div>
             </div>
           </li>
