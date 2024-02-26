@@ -14,7 +14,7 @@ const EventHistoryCard: FC = (): JSX.Element => {
               <div>
                 <span className="font-semibold"></span> Event ABC
               </div>
-              <div className="absolute top-4 right-4 p-2 mb-0  border text-black-500 border-blue-500 rounded-full cursor-pointer">
+              <div className="absolute top-4 right-4 p-2  border text-black-500 border-blue-500 rounded-full cursor-pointer">
                 <Image
                   src={PendingLogo}
                   height={10}

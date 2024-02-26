@@ -1,9 +1,9 @@
-// SideNavbar.tsx
+"use client"
+
 import React, { FC, useState } from "react";
 import Image from "next/image";
 import Logo from "@/assets/images/sahyadri-logo.png";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 interface propsType {
   navList?: {
@@ -14,7 +14,6 @@ interface propsType {
 }
 
 const SideNavbar: FC<propsType> = ({ navList }): JSX.Element => {
-  const router = useRouter();
   const [activeTab, setActiveTab] = useState<number>(0);
 
   return (
@@ -33,16 +32,14 @@ const SideNavbar: FC<propsType> = ({ navList }): JSX.Element => {
                 ? "bg-[#3db166] text-white" // Active tab background and font color
                 : "text-[#979797]" // Inactive tab background and font color
             }`}
-            onClick={() => {
-              setActiveTab(index);
-              router.push(item.link); // Use Next.js router to navigate
-            }}
+            onClick={() => setActiveTab(index)}
           >
             {item.icon}
             <span>{item.label}</span>
           </Link>
         ))}
       </nav>
+      
     </div>
   );
 };
