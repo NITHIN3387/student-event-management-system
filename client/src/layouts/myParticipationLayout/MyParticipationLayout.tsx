@@ -11,7 +11,7 @@ const MyParticipationLayout: FC<propsType> = ({ children }): JSX.Element => {
       <div>
         {children}
       </div>
-      <div className='overflow-scroll rounded-lg h-full' >
+      <div className='overflow-scroll rounded-lg h-full flex flex-col gap-4' >
         <ParticipationCard />
       </div>
     </div>

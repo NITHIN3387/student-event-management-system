@@ -1,79 +1,35 @@
 import React, { FC } from 'react';
-import Image from 'next/image';
-import LocationLogo from "@/assets/images/location-pin.png"
-import PendingLogo from "@/assets/images/time.png"
-import DateLogo from "@/assets/images/calendar.png"
+import PendingLogo from '@/assets/icons/PendingLogo';
+import LocationIcon from '@/assets/icons/LocationIcon';
+import DateIcon from '@/assets/icons/DateIcon';
 
 const EventHistoryCard: FC = (): JSX.Element => {
   return (
-    <div className="bg-white  p-4 rounded-lg relative">
-      <div className="flex flex-col mb-4">
-        <ul className="space-y-2 flex-col">
-          <li>
-            <div className="flex justify-between flex-col">
-              <div>
-                <span className="font-semibold"></span> Event ABC
-              </div>
-              <div className="absolute top-4 right-4 p-2  border text-black-500 border-blue-500 rounded-full cursor-pointer">
-                <Image
-                  src={PendingLogo}
-                  height={10}
-                  width={15}
-                  alt="logo"
-                  className="inline"
-                />
-                Pending
-              </div>
-              <div>
-                <span className="font-semibold">
-                  <Image
-                    src={LocationLogo}
-                    height={10}
-                    width={10}
-                    alt="logo"
-                    className="inline"
-                  />
-                </span> Participation Place XYZ
-              </div>
-              <div>
-                <span className="font-semibold">
-                  <Image
-                    src={DateLogo}
-                    height={10}
-                    width={10}
-                    alt="logo"
-                    className="inline"
-                  />
-                </span> Start Date: 2022-02-28
-              </div>
-              <div>
-                <span className="font-semibold">
-                  <Image
-                    src={DateLogo}
-                    height={10}
-                    width={10}
-                    alt="logo"
-                    className="inline"
-                  />
-                </span> Due Date: 2022-03-05
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      
-      <div className="flex justify-between items-end mt-auto">
-        <div className="flex items-center pl-4 pr-4 rounded-full  bg-yellow-500  text-white cursor-pointer">
-          Update Certificate
+    <div className="bg-white p-4 rounded-lg grid gap-2">
+      <div className='flex justify-between items-center'>
+        <h1 className='text-2xl'>Synergia</h1>
+        <div className='flex items-center gap-1 text-[0.85em] border px-2 py-1 rounded-s-full rounded-e-full border-slate-500 text-slate-500'>
+          <PendingLogo height={15} width={15}/>
+          <span>Pending</span>
         </div>
-        
-        <div className="flex space-x-2">
-          <div className="pr-4 pl-4 ml-4 rounded-full border bg-green-500  text-whit cursor-pointer">
-            Edit
-          </div>
-          <div className="pr-4 pl-4  rounded-full border bg-red-500  text-whit cursor-pointer">
-            Delete
-          </div>
+      </div>
+
+      <div className='flex items-center gap-1'>
+        <LocationIcon height={20} width={20}/>
+        <p>Sahyadri College of Engineering and Management, adyar, mangalore</p>
+      </div>
+
+      <div className='flex items-center gap-1 text-[0.9em] text-slate-600'>
+        <DateIcon height={20} width={20}/>
+        <span>01-01-2024</span>
+        <span>To 03-01-2024</span>
+      </div>
+
+      <div className='flex justify-between mt-2'>
+        <button className='bg-primary-color text-white px-2 py-1 rounded-md'>Update Certificate</button>
+        <div className='flex gap-3'>
+          <button className='bg-blue-500 text-white px-2 py-1 rounded-md'>Edit</button>
+          <button className='bg-red-500 text-white px-2 py-1 rounded-md'>Delete</button>
         </div>
       </div>
     </div>

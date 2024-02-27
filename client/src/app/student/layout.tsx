@@ -23,6 +23,11 @@ const navList: navListType[] = [
     icon: <Dashboard height={25} width={25} />,
     link: "/student/attendence",
   },
+  {
+    label: "Marks",
+    icon: <Dashboard height={25} width={25} />,
+    link: "/student/marks",
+  },
 ];
 
 export default function RootLayout({
