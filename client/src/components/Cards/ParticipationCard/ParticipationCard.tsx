@@ -1,15 +1,20 @@
 "use client"
+
+
 import React, { FC, useState } from 'react';
 import Image from 'next/image';
 import LocationLogo from "@/assets/images/location-pin.png";
 import PendingLogo from "@/assets/images/time.png";
 import DateLogo from "@/assets/images/calendar.png";
 
+
 const EventHistoryCard: FC = (): JSX.Element => {
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [prize, setPrize] = useState('');
   const [file, setFile] = useState<File | null>(null);
 
+  
   const handleUpdateCertificate = () => {
     setIsModalOpen(true);
   };
@@ -19,7 +24,7 @@ const EventHistoryCard: FC = (): JSX.Element => {
     setFile(selectedFile || null);
   };
 
-  const handlePrizeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePrizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setPrize(event.target.value);
   };
 
@@ -30,6 +35,7 @@ const EventHistoryCard: FC = (): JSX.Element => {
     setIsModalOpen(false);
   };
 
+  
   return (
     <div className="border border-gray-300 p-4 rounded-lg shadow-md relative">
       <div className="flex flex-col mb-4">
@@ -39,6 +45,7 @@ const EventHistoryCard: FC = (): JSX.Element => {
               <div>
                 <span className="font-semibold"></span> Event ABC
               </div>
+             
               <div className="absolute top-4 right-4 p-2  border text-black-500 border-blue-500 rounded-full cursor-pointer">
                 <Image
                   src={PendingLogo}
@@ -105,26 +112,34 @@ const EventHistoryCard: FC = (): JSX.Element => {
         </div>
       </div>
 
-      {/* Modal */}
+      
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-md">
             <h2 className="text-xl font-semibold mb-3">Update Certificate</h2>
             <input type="file" onChange={handleFileChange} />
-            <input
-              type="text"
-              placeholder="Prize"
+
+            
+            <select
               value={prize}
               onChange={handlePrizeChange}
-            />
-            <button className="bg-green-500 mr-4 rounded-full p-1"onClick={handleSubmit}>Submit</button>
+              className=" w-full p-2 border rounded-md mb-3 mt-3"
+            >
+              <option value="">Select Prize</option>
+              <option value="1st Prize">1st Prize</option>
+              <option value="2nd Prize">2nd Prize</option>
+              <option value="3rd Prize">3rd Prize</option>
+              <option value="Participation">Participation</option>
+            </select>
 
-            <button className="bg-red-500 rounded-full p-1"onClick={() => setIsModalOpen(false)}>Cancel</button>
+            <button className="bg-green-500 mr-4 rounded-full p-1" onClick={handleSubmit}>Submit</button>
+            <button className="bg-red-500 rounded-full p-1" onClick={() => setIsModalOpen(false)}>Cancel</button>
           </div>
         </div>
       )}
     </div>
   );
 }
+
 
 export default EventHistoryCard;
