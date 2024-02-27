@@ -1,13 +1,10 @@
 "use client";
-
 import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
 import HidePassword from "@/assets/icons/HidePassword";
 import ShowPassword from "@/assets/icons/ShowPassword";
 import { useRouter } from "next/navigation";
-
 const LoginForm: FC = (): JSX.Element => {
   const router = useRouter()
-
   // variables to store the inputs given by the user in Login form
   const [registerNumber, setRegisterNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -22,7 +19,6 @@ const LoginForm: FC = (): JSX.Element => {
   const [invalidRegisterNumber, setInvalidRegisterNumber] =
     useState<boolean>(false);
   const [incorrectPassword, setIncorrectPassword] = useState<boolean>(false);
-
   /*
     funtion to read the input given by the user in register Number input box
     params:
@@ -39,7 +35,6 @@ const LoginForm: FC = (): JSX.Element => {
     if (emptyRegisterNumber) setEmptyRegisterNumber(false);
     if (invalidRegisterNumber) setInvalidRegisterNumber(false);
   };
-
   /*
     funtion to read the input given by the user in Password input box
     params:
