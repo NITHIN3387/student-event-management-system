@@ -39,6 +39,7 @@ const SideNavbar: FC<propsType> = ({ navList }): JSX.Element => {
           </Link>
         ))}
       </nav>
+      
     </div>
   );
 };
