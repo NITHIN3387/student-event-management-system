@@ -208,9 +208,9 @@ const AddParticipationForm: FC = (): JSX.Element => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ EID: EID.id }),
       credentials: "include",
-    });
+    })    
 
-    if (participateResponce.status !== 200) {
+    if (participateResponce.status === 409) {
       setAlreadyRegistered(true);
       return;
     }
