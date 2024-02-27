@@ -4,7 +4,11 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 
 import dbConnection from "./config/dbConnection";
+
 import authRouter from "./routes/auth.route"
+import eventsRouter from "./routes/events.route"
+import participateRouter from "./routes/participate.route"
+import pendingAttendenceRouter from "./routes/pendingAttendence.route"
 
 const app = express();
 dotenv.config()
@@ -24,6 +28,9 @@ app.use(cors({
 }))
 
 app.use("/auth", authRouter)
+app.use("/events", eventsRouter)
+app.use("/participate", participateRouter)
+app.use("/pending-attendence", pendingAttendenceRouter)
 
 const PORT: string = process.env.PORT || "4000";
 
