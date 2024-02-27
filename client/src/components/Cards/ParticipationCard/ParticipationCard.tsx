@@ -15,8 +15,8 @@ const EventHistoryCard: FC = (): JSX.Element => {
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0];
-    setFile(selectedFile);
+    const selectedFile = event.target.files && event.target.files[0];
+    setFile(selectedFile || null);
   };
 
   const handlePrizeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
