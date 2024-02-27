@@ -11,7 +11,7 @@ const getParticipationByAuthUserId: RequestHandler = async (req, res) => {
   `
 
   dbConnection.query(query, (error, result) => {
-    if (error) {
+    if (error) {      
       res.status(500).send("internal server error");
       console.log(error);
       return;
@@ -27,7 +27,7 @@ const addParticipation: RequestHandler = async (req, res) => {
 
   const query = `
     INSERT INTO PARTICIPATE VALUE (
-      '${user.SID}', '${EID}', 'Pending', NULL
+      '${user.SID}', '${EID}', 'Pending', NULL, NULL
     )
   `;
 

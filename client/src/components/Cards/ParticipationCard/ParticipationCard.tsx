@@ -6,7 +6,7 @@ import DateLogo from "@/assets/images/calendar.png"
 
 const EventHistoryCard: FC = (): JSX.Element => {
   return (
-    <div className="border border-gray-300 p-4 rounded-lg shadow-md relative">
+    <div className="bg-white  p-4 rounded-lg relative">
       <div className="flex flex-col mb-4">
         <ul className="space-y-2 flex-col">
           <li>
