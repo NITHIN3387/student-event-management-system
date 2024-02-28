@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import PendingLogo from "@/assets/icons/PendingLogo";
 import LocationIcon from "@/assets/icons/LocationIcon";
 import DateIcon from "@/assets/icons/DateIcon";
+import UpdateCertificateModel from "@/components/Modals/UpdateCertificateModel/UpdateCertificateModel";
 
 interface propsType {
   event: {
@@ -19,6 +20,8 @@ interface propsType {
 }
 
 const EventHistoryCard: FC<propsType> = ({ event }): JSX.Element => {
+  const [openModel, setOpenModel] = useState<boolean>(false)
+
   return (
     <div className="bg-white p-4 rounded-lg grid gap-2">
       <div className="flex justify-between items-center">
@@ -51,7 +54,7 @@ const EventHistoryCard: FC<propsType> = ({ event }): JSX.Element => {
             View Certificate
           </button>
         ) : (
-          <button className="bg-primary-color text-white px-2 py-1 rounded-md">
+          <button className="bg-primary-color text-white px-2 py-1 rounded-md" onClick={() => setOpenModel(true)}>
             Update Certificate
           </button>
         )}
@@ -64,6 +67,7 @@ const EventHistoryCard: FC<propsType> = ({ event }): JSX.Element => {
           </button>
         </div>
       </div>
+      {openModel && <UpdateCertificateModel setOpenModel={setOpenModel}/>}
     </div>
   );
 };

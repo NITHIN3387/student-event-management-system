@@ -23,7 +23,7 @@ const AccessAlertModel: FC = (): JSX.Element => {
     <div
       className={
         (hidden ? "hidden" : "") +
-        " absolute h-screen w-full backdrop-blur-sm backdrop-brightness-90 top-0 left-0 flex justify-center items-center"
+        " absolute h-screen w-full backdrop-blur-sm backdrop-brightness-50 top-0 left-0 flex justify-center items-center"
       }
     >
       <div className="bg-white sm:p-10 p-5 rounded-xl flex flex-col items-center gap-3 text-red-500">
