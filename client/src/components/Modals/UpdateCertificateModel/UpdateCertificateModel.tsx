@@ -5,7 +5,7 @@ import SearchableDropDown from "@/components/FormInputs/SearchableDropDown/Searc
 import React, { FC, useState } from "react";
 
 interface propType {
-  eid: number
+  pid: number
   setOpenModel: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -18,7 +18,7 @@ const options = [
 
 const UpdateCertificateModel: FC<propType> = ({
   setOpenModel,
-  eid
+  pid
 }): JSX.Element => {
   const [prize, setPrize] = useState("");
   const [file, setFile] = useState<File[]>([]);
@@ -42,10 +42,10 @@ const UpdateCertificateModel: FC<propType> = ({
     
     formData.append("certificate", file[0])
     formData.append("prize", prize)
-    formData.append("eid", eid.toString())
+    formData.append("pid", pid.toString())
 
     const responce = await fetch(URL, {
-      method: "POST",
+      method: "PUT",
       body: formData,
       credentials: "include"
     })

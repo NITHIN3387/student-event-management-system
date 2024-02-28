@@ -215,12 +215,14 @@ const AddParticipationForm: FC = (): JSX.Element => {
       return;
     }
 
+    const PID = await participateResponce.json()
+
     subjects.forEach(async (subject) => {
       await fetch(URL_PENDING_ATTENDECE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          EID: EID.id,
+          PID: PID.id,
           SUBID: subject.name.split("-")[1],
           Count: subject.count,
         }),
@@ -310,6 +312,7 @@ const AddParticipationForm: FC = (): JSX.Element => {
           <InputBox
             label="Count"
             placeholder="Enter number of period you will miss"
+            type="number"
             setValue={setCount}
             emptyValue={emptyCount}
             setEmptyValue={setEmptyCount}
@@ -317,7 +320,7 @@ const AddParticipationForm: FC = (): JSX.Element => {
         </div>
 
         <div className="grid gap-1">
-          <label className="opacity-0">h</label>
+          <label className="opacity-0">.</label>
           <button
             className="bg-primary-color px-3 py-1 text-white rounded-md"
             type="button"
