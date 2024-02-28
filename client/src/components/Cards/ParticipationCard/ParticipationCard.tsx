@@ -59,9 +59,9 @@ const EventHistoryCard: FC<propsType> = ({ event }): JSX.Element => {
           </button>
         )}
         <div className="flex gap-3">
-          <button className="bg-blue-500 text-white px-2 py-1 rounded-md">
+          {/* <button className="bg-blue-500 text-white px-2 py-1 rounded-md">
             Edit
-          </button>
+          </button> */}
           <button className="bg-red-500 text-white px-2 py-1 rounded-md">
             Delete
           </button>
