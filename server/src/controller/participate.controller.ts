@@ -27,7 +27,7 @@ const addParticipation: RequestHandler = async (req, res) => {
 
   const query = `
   INSERT INTO PARTICIPATE VALUE (
-    '${user.SID}', '${EID}', 'Pending', NULL, NULL
+    NULL, '${user.SID}', '${EID}', 'Pending', NULL, NULL
   )`;
 
   dbConnection.query(query, (error, result) => {
@@ -47,14 +47,13 @@ const addParticipation: RequestHandler = async (req, res) => {
 };
 
 const updateCertificate: RequestHandler = async (req, res) => {
-  const user = (req as any).user;
   const file = req.file;
-  const { prize, eid } = req.body;
+  const { prize, pid } = req.body;
 
   const query = `
     UPDATE PARTICIPATE
     SET CERTIFICATE = '${file?.filename}', AWARD = '${prize}'
-    WHERE SID = '${user.SID}' AND EID = '${eid}'
+    WHERE PID = '${pid}'
   `;
 
   dbConnection.query(query, (error, result) => {
@@ -69,10 +68,39 @@ const updateCertificate: RequestHandler = async (req, res) => {
 };
 
 const getCertificateImage: RequestHandler = async (req, res) => {
-  const filename = req.params.file
-  const filePath = __dirname.split("/dist/controller")[0] + "/src/certificateFiles/" + filename
+  const filename = req.params.file;
+  const filePath =
+    __dirname.split("/dist/controller")[0] +
+    "/src/certificateFiles/" +
+    filename;
 
-  res.sendFile(filePath)
-}
+  res.sendFile(filePath);
+};
 
-export { addParticipation, getParticipationByAuthUserId, updateCertificate, getCertificateImage };
+const deleteParticipate: RequestHandler = async (req, res) => {
+  const PID = req.params.id;
+
+  const query = `
+    DELETE FROM PARTICIPATE
+    WHERE PID = ${PID}
+  `;
+
+  dbConnection.query(query, (error) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }    
+
+    res.status(200).send("deleted successfully");
+  });
+
+};
+
+export {
+  addParticipation,
+  getParticipationByAuthUserId,
+  updateCertificate,
+  getCertificateImage,
+  deleteParticipate,
+};

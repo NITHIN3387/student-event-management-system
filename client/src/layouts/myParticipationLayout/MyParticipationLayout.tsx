@@ -23,7 +23,7 @@ const MyParticipationLayout: FC<propsType> = ({ children }): JSX.Element => {
     }
 
     fetchUserParticipateEvent()
-  }, [])
+  }, [participateEvent])
 
   return (
     <div className='flex flex-col overflow-scroll'>
@@ -31,7 +31,10 @@ const MyParticipationLayout: FC<propsType> = ({ children }): JSX.Element => {
         {children}
       </div>
       <div className='overflow-scroll rounded-lg h-full flex flex-col gap-4' >
-        { participateEvent.map((event, index) => <div key={index}><ParticipationCard event={event}/></div>) }
+        { participateEvent.length ? 
+            participateEvent.map((event, index) => <div key={index}><ParticipationCard event={event}/></div>) :
+            <h1 className='text-center text-3xl font-bold mt-7'>You did&apos;n participated to any event at 😔;</h1>
+        }
       </div>
     </div>
   )

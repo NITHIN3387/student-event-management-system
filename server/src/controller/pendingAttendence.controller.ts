@@ -2,12 +2,11 @@ import { RequestHandler } from "express";
 import dbConnection from "../config/dbConnection";
 
 const addPendingAttendence: RequestHandler = async (req, res) => {
-  const user = (req as any).user;
-  const { EID, SUBID, Count } = req.body;
+  const { PID, SUBID, Count } = req.body;
 
   const query = `
     INSERT INTO PENDING_ATTENDENCE VALUE (
-      '${user.SID}', '${EID}', '${SUBID}', '${Count}'
+      '${PID}', '${SUBID}', '${Count}'
     )
   `;
 

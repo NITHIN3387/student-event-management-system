@@ -1,9 +1,12 @@
+"use client"
+
 import React, { FC, useState } from "react";
 import PendingLogo from "@/assets/icons/PendingLogo";
 import LocationIcon from "@/assets/icons/LocationIcon";
 import DateIcon from "@/assets/icons/DateIcon";
 import UpdateCertificateModel from "@/components/Modals/UpdateCertificateModel/UpdateCertificateModel";
 import ImageViewModel from "@/components/Modals/ImageViewModel/ImageViewModel";
+import { useRouter } from "next/navigation";
 
 interface propsType {
   event: {
@@ -14,15 +17,30 @@ interface propsType {
     END_DATE: string;
     EPLACE: string;
     ETYPE: string;
+    PID: number;
     SID: string;
     START_DATE: string;
     STATUS: string;
   };
 }
 
-const EventHistoryCard: FC<propsType> = ({ event }): JSX.Element => {
+const ParticipationCard: FC<propsType> = ({ event }): JSX.Element => {
+  const router = useRouter()
+
   const [openModel, setOpenModel] = useState<boolean>(false)
   const [viewImage, setViewImage] = useState<boolean>(false)
+
+  const handleDelete = async () => {
+    const url = process.env.NEXT_PUBLIC_SERVER_URL + "/participate/" + event.PID
+
+    const responce = await fetch(url, {
+      method: "DELETE",
+      credentials: "include"
+    })
+
+    if (responce.status === 200)
+      router.refresh()
+  }
 
   return (
     <div className="bg-white p-4 rounded-lg grid gap-2">
@@ -64,15 +82,15 @@ const EventHistoryCard: FC<propsType> = ({ event }): JSX.Element => {
           {/* <button className="bg-blue-500 text-white px-2 py-1 rounded-md">
             Edit
           </button> */}
-          <button className="bg-red-500 text-white px-2 py-1 rounded-md">
+          <button className="bg-red-500 text-white px-2 py-1 rounded-md" onClick={handleDelete}>
             Delete
           </button>
         </div>
       </div>
-      {openModel && <UpdateCertificateModel setOpenModel={setOpenModel} eid={event.EID}/>}
+      {openModel && <UpdateCertificateModel setOpenModel={setOpenModel} pid={event.PID}/>}
       {viewImage && <ImageViewModel file={event.CERTIFICATE} setViewImage={setViewImage}/>}
     </div>
   );
 };
 
-export default EventHistoryCard;
+export default ParticipationCard;
