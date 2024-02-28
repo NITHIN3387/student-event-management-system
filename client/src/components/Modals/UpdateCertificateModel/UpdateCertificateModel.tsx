@@ -1,10 +1,11 @@
 "use client";
 
-import InputBox from "@/components/FormInputs/InputBox/InputBox";
+import FileInputBox from "@/components/FormInputs/FIleInputBox/FileInputBox";
 import SearchableDropDown from "@/components/FormInputs/SearchableDropDown/SearchableDropDown";
 import React, { FC, useState } from "react";
 
 interface propType {
+  eid: number
   setOpenModel: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -17,14 +18,15 @@ const options = [
 
 const UpdateCertificateModel: FC<propType> = ({
   setOpenModel,
+  eid
 }): JSX.Element => {
   const [prize, setPrize] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File[]>([]);
 
   const [emptyFile, setEmptyFile] = useState<boolean>(false);
   const [emptyPrize, setEmptyPrize] = useState<boolean>(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!file) {
       setEmptyFile(true)
       return
@@ -35,10 +37,21 @@ const UpdateCertificateModel: FC<propType> = ({
       return
     }
 
-    console.log("File:", file);
-    console.log("Prize:", prize);
+    const URL = process.env.NEXT_PUBLIC_SERVER_URL + "/participate/update-certificate"
+    const formData = new FormData()
+    
+    formData.append("certificate", file[0])
+    formData.append("prize", prize)
+    formData.append("eid", eid.toString())
 
-    setOpenModel(false);
+    const responce = await fetch(URL, {
+      method: "POST",
+      body: formData,
+      credentials: "include"
+    })
+
+    if (responce.status === 200)
+      setOpenModel(false);
   };
 
   return (
@@ -50,9 +63,9 @@ const UpdateCertificateModel: FC<propType> = ({
       }
     >
       <div className="bg-white p-6 rounded-md">
-        <InputBox
-          type="file"
+        <FileInputBox
           label="Update Certificate"
+          accept='image/*'
           setValue={setFile}
           emptyValue={emptyFile}
           setEmptyValue={setEmptyFile}

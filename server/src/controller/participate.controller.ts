@@ -47,14 +47,13 @@ const addParticipation: RequestHandler = async (req, res) => {
 };
 
 const updateCertificate: RequestHandler = async (req, res) => {
-  const user = (req as any).user
+  const user = (req as any).user;
   const file = req.file;
   const { prize, eid } = req.body;
 
-  const query = 
-  `
+  const query = `
     UPDATE PARTICIPATE
-    SET CERTIFICATE = '${file?.path}', AWARD = '${prize}'
+    SET CERTIFICATE = '${file?.filename}', AWARD = '${prize}'
     WHERE SID = '${user.SID}' AND EID = '${eid}'
   `;
 
@@ -66,6 +65,14 @@ const updateCertificate: RequestHandler = async (req, res) => {
     }
 
     res.status(200).json(result);
-  });};
+  });
+};
 
-export { addParticipation, getParticipationByAuthUserId, updateCertificate };
+const getCertificateImage: RequestHandler = async (req, res) => {
+  const filename = req.params.file
+  const filePath = __dirname.split("/dist/controller")[0] + "/src/certificateFiles/" + filename
+
+  res.sendFile(filePath)
+}
+
+export { addParticipation, getParticipationByAuthUserId, updateCertificate, getCertificateImage };

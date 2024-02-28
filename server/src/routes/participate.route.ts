@@ -1,7 +1,7 @@
 import multer from "multer"
 import { Router } from "express";
 import { authUser } from "../middleware/auth.middleware";
-import { addParticipation, getParticipationByAuthUserId, updateCertificate } from "../controller/participate.controller";
+import { addParticipation, getCertificateImage, getParticipationByAuthUserId, updateCertificate } from "../controller/participate.controller";
 
 const router = Router();
 const storagPath = __dirname.split("/dist/routes")[0] + "/src/certificateFiles";
@@ -21,5 +21,6 @@ const upload = multer({ storage: storage })
 router.post("/", authUser, addParticipation)
 router.get("/", authUser, getParticipationByAuthUserId)
 router.post("/update-certificate", authUser, upload.single("certificate"), updateCertificate)
+router.get("/certificate/:file", getCertificateImage)
 
 export default router;
