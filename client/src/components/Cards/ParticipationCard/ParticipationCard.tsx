@@ -25,7 +25,7 @@ const EventHistoryCard: FC<propsType> = ({ event }): JSX.Element => {
         <h1 className="text-2xl">
           {event.ENAME}
           <span className="text-slate-500 text-[0.5em] ml-3">
-            {event.ETYPE}
+            {`(${event.ETYPE})`}
           </span>
         </h1>
         <div className="flex items-center gap-1 text-[0.85em] border px-2 py-1 rounded-s-full rounded-e-full border-slate-500 text-slate-500">
