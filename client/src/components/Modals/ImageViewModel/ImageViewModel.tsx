@@ -40,6 +40,7 @@ const ImageViewModel: FC<propsType> = ({ file, setViewImage }): JSX.Element => {
           alt="image"
           layout="fill"
           objectFit="contain"
+          className="p-5"
         />
       </div>
     </div>
