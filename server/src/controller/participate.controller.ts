@@ -2,12 +2,12 @@ import { RequestHandler } from "express";
 import dbConnection from "../config/dbConnection";
 
 const getParticipationByAuthUserId: RequestHandler = async (req, res) => {
-  const user = (req as any).user;
+  const user = (req as any).user;  
 
   const query = `
     SELECT *
-    FROM PARTICIPATE
-    WHERE Sid = '${user.SID}'
+    FROM PARTICIPATE P, EVENTS E
+    WHERE SID = '${user.SID}' AND E.EID = P.EID
   `;
 
   dbConnection.query(query, (error, result) => {
@@ -15,7 +15,7 @@ const getParticipationByAuthUserId: RequestHandler = async (req, res) => {
       res.status(500).send("internal server error");
       console.log(error);
       return;
-    }
+    }    
 
     res.status(200).json(result);
   });
