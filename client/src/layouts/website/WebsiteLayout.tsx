@@ -3,7 +3,7 @@ import { FC, ReactNode, useState } from 'react';
 import WebsiteHeader from '@/components/Headers/WebsiteHeader/WebsiteHeader';
 import SideNavbar from '@/components/Navbars/SideNavbar/SideNavbar';
 import AuthUserProvider from '@/contexts/authUser.context';
-import AccessAlertModel from '@/components/AccessAlertModel/AccessAlertModel';
+import AccessAlertModel from '@/components/Modals/AccessAlertModel/AccessAlertModel';
 import IntroLoader from '@/components/Loaders/IntroLoader/IntroLoader';
 import './websiteLayout.css';
 
