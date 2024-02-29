@@ -19,7 +19,7 @@ const navList: navListType[] = [
 
 const RootLayout: FC<Readonly<{ children: ReactNode }>> = ({ children }) => {
   return (
-    <div className=" overflow-y-hidden">
+    <div>
       <TabsNavbar navList={navList} />
       {children}
     </div>
