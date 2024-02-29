@@ -1,7 +1,7 @@
 "use client";
 
 import Loader from "@/components/Loaders/Loader/Loader";
-import Table from "@/components/Tables/Table";
+import Table from "@/components/Tables/Table/Table";
 import React, { useEffect, useState } from "react";
 
 interface responceType {
