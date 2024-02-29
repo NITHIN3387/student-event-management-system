@@ -19,11 +19,9 @@ const navList: navListType[] = [
 
 const RootLayout: FC<Readonly<{ children: ReactNode }>> = ({ children }) => {
   return (
-    <div>
+    <div className=" overflow-y-hidden">
       <TabsNavbar navList={navList} />
-      <div className="mt-7">
-        {children}
-      </div>
+      {children}
     </div>
   );
 };

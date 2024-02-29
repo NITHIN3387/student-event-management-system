@@ -6,6 +6,7 @@ interface PendingAttendance {
   SubName: string;
   COUNT: number;
 }
+
 const tableRowVal = [
   "Subject Name",
   "Pending attendence"
