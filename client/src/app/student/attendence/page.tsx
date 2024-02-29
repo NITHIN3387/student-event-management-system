@@ -1,15 +1,22 @@
-import AttendenceTable from '@/components/Tables/AttendenceTable/AttendenceTable'
-import React, { FC } from 'react'
+"use client";
 
-const page: FC = (): JSX.Element => {
-  return (
-    <div>
-      Attendence
-      <div>
-        <AttendenceTable />
-      </div>
-    </div>
-  )
-}
+import Table from "@/components/Tables/Table";
+import React, { FC, useState } from "react";
 
-export default page
+const tableRowVal = [
+  "Subject Name",
+  "Total Class",
+  "Present",
+  "Absent",
+  "Percentage"
+];
+
+const Page: FC = (): JSX.Element => {
+  const [tableColVal, setTableColVal] = useState<Array<Array<string | number>>>(
+    [[]]
+  );
+
+  return <Table tableRowVal={tableRowVal} tableColVal={tableColVal} />;
+};
+
+export default Page;
