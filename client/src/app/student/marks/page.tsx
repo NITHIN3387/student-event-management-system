@@ -44,7 +44,7 @@ const Page = () => {
           subject.IA2,
           subject.IA3,
           subject.ASSIGNMENT,
-          (subject.IA1 + subject.IA2 + subject.IA3) / 3 + subject.ASSIGNMENT
+          parseInt(`${(subject.IA1 + subject.IA2 + subject.IA3) / 3}`) + subject.ASSIGNMENT
         ])
       );
     };

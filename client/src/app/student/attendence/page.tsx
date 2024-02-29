@@ -40,7 +40,7 @@ const Page: FC = (): JSX.Element => {
           subject.CONDUCTED,
           subject.PRESENT,
           subject.CONDUCTED - subject.PRESENT,
-          (subject.PRESENT / subject.CONDUCTED) * 100,
+          parseInt(`${(subject.PRESENT / subject.CONDUCTED) * 100}`),
         ])
       );
     };
