@@ -1,6 +1,7 @@
 "use client"
 
 import ParticipationCard from '@/components/Cards/ParticipationCard/ParticipationCard'
+import Loader from '@/components/Loaders/Loader/Loader'
 import React, { FC, ReactNode, useEffect, useState } from 'react'
 
 interface propsType {
@@ -8,6 +9,7 @@ interface propsType {
 }
 
 const MyParticipationLayout: FC<propsType> = ({ children }): JSX.Element => {
+  const [loader, setLoader] = useState<boolean>(true)
   const [participateEvent, setParticipateEvent] = useState([])
 
   useEffect(() => {
@@ -20,10 +22,13 @@ const MyParticipationLayout: FC<propsType> = ({ children }): JSX.Element => {
       }).then((res) => res.json())
 
       setParticipateEvent(responce)
+      setLoader(false)
     }
 
     fetchUserParticipateEvent()
   }, [participateEvent])
+
+  if (loader) return <Loader />
 
   return (
     <div className='flex flex-col overflow-scroll'>

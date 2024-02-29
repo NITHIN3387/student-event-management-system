@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from "@/components/Loaders/Loader/Loader";
 import Table from "@/components/Tables/Table";
 import React, { useEffect, useState } from "react";
 
@@ -24,6 +25,7 @@ const tableRowVal = [
 ];
 
 const Page = () => {
+  const [loader, setLoader] = useState<boolean>(true)
   const [tableColVal, setTableColVal] = useState<Array<Array<string | number>>>(
     [[]]
   );
@@ -47,10 +49,13 @@ const Page = () => {
           parseInt(`${(subject.IA1 + subject.IA2 + subject.IA3) / 3}`) + subject.ASSIGNMENT
         ])
       );
+      setLoader(false)
     };
 
     fetchMarks();
   }, []);
+
+  if (loader) return <Loader />
 
   return (
     <div>
