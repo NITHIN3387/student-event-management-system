@@ -10,6 +10,8 @@ import eventsRouter from "./routes/events.route"
 import participateRouter from "./routes/participate.route"
 import pendingAttendenceRouter from "./routes/pendingAttendence.route"
 import enrollRouter from "./routes/enroll.route"
+import attendenceRouter from "./routes/attendence.route"
+import marksRouter from "./routes/marks.router"
 
 const app = express();
 dotenv.config()
@@ -33,6 +35,8 @@ app.use("/events", eventsRouter)
 app.use("/participate", participateRouter)
 app.use("/pending-attendence", pendingAttendenceRouter)
 app.use("/enroll", enrollRouter)
+app.use("/attendence", attendenceRouter)
+app.use("/marks", marksRouter)
 
 const PORT: string = process.env.PORT || "4000";
 
