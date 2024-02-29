@@ -1,8 +1,12 @@
+import PendingAttendenceCollapsible from '@/components/Collapesibles/PendingAttendenceCollapsible'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>pending</div>
+    <div>
+      pending
+      <PendingAttendenceCollapsible />
+    </div>
   )
 }
 
