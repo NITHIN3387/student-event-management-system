@@ -1,4 +1,7 @@
+import AttendenceIcon from "@/assets/icons/AttendenceIcon";
 import Dashboard from "@/assets/icons/Dashboard";
+import MarksIcon from "@/assets/icons/MarksIcon";
+import MyParticipationIcon from "@/assets/icons/myParticipationIcon";
 import WebsiteLayout from "@/layouts/website/WebsiteLayout";
 
 interface navListType {
@@ -15,17 +18,17 @@ const navList: navListType[] = [
   },
   {
     label: "My Participation",
-    icon: <Dashboard height={25} width={25} />,
+    icon: <MyParticipationIcon height={25} width={25} />,
     link: "/student/myParticipation",
   },
   {
     label: "Attendence",
-    icon: <Dashboard height={25} width={25} />,
+    icon: <AttendenceIcon height={25} width={25} />,
     link: "/student/attendence",
   },
   {
     label: "Marks",
-    icon: <Dashboard height={25} width={25} />,
+    icon: <MarksIcon height={25} width={25} />,
     link: "/student/marks",
   },
 ];
