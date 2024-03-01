@@ -1,0 +1,10 @@
+.background {
+  background-image: conic-gradient(#3db166 75%, #f0f2f5 25%);
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

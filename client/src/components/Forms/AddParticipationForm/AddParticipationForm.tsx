@@ -3,6 +3,7 @@
 import AutoCompleteInputBox from "@/components/FormInputs/AutoCompleteInputBox/AutoCompleteInputBox";
 import InputBox from "@/components/FormInputs/InputBox/InputBox";
 import SearchableDropDown from "@/components/FormInputs/SearchableDropDown/SearchableDropDown";
+import Loader from "@/components/Loaders/Loader/Loader";
 import { useRouter } from "next/navigation";
 import React, {
   FC,
@@ -46,6 +47,8 @@ const Etypes: optionsTypes[] = [
 
 const AddParticipationForm: FC = (): JSX.Element => {
   const router = useRouter()
+
+  const [loader, setLoader] = useState<boolean>(true)
 
   const [Ename, setEname] = useState<string>("");
   const [Eplace, setEplace] = useState<string>("");
@@ -105,6 +108,7 @@ const AddParticipationForm: FC = (): JSX.Element => {
       setEventOptions(
         Array.from(new Map(allEvents.map((obj) => [obj.key, obj])).values())
       );
+      setLoader(false)
     };
 
     fetchEnrolledSubjects();
@@ -232,6 +236,8 @@ const AddParticipationForm: FC = (): JSX.Element => {
 
     router.back()
   };
+
+  if (loader) return <Loader />
 
   return (
     <form onSubmit={handleSubmit}>

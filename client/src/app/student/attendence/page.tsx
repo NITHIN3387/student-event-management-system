@@ -1,6 +1,7 @@
 "use client";
 
-import Table from "@/components/Tables/Table";
+import Loader from "@/components/Loaders/Loader/Loader";
+import Table from "@/components/Tables/Table/Table";
 import React, { FC, useEffect, useState } from "react";
 
 interface responceType {
@@ -21,6 +22,7 @@ const tableRowVal = [
 ];
 
 const Page: FC = (): JSX.Element => {
+  const [loader, setLoader] = useState<boolean>(true)
   const [tableColVal, setTableColVal] = useState<Array<Array<string | number>>>(
     [[]]
   );
@@ -43,12 +45,19 @@ const Page: FC = (): JSX.Element => {
           parseInt(`${(subject.PRESENT / subject.CONDUCTED) * 100}`),
         ])
       );
+      setLoader(false)
     };
 
     fetchAttendence();
   }, []);
 
-  return <Table tableRowVal={tableRowVal} tableColVal={tableColVal} />;
+  if (loader) return <Loader />
+
+  return (
+    <div className="mt-7">
+      <Table tableRowVal={tableRowVal} tableColVal={tableColVal} />
+    </div>
+  );
 };
 
 export default Page;
