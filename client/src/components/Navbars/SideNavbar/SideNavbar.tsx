@@ -1,9 +1,10 @@
 "use client"
 
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import Logo from "@/assets/images/sahyadri-logo.png";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface propsType {
   navList?: {
@@ -14,7 +15,18 @@ interface propsType {
 }
 
 const SideNavbar: FC<propsType> = ({ navList }): JSX.Element => {
+  const pathname = usePathname()
   const [activeTab, setActiveTab] = useState<number>(0);
+
+  useEffect(() => {
+    if (navList)
+      for (let i = 0; i < navList?.length; i++) {
+        if (pathname.startsWith(navList[i].link)) {
+          setActiveTab(i)
+          break
+        }
+    }
+  }, [pathname, navList])
 
   return (
     <div className="hidden lg:flex flex-col h-screen bg-[#212529]">
