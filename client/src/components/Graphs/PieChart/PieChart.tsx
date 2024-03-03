@@ -9,7 +9,6 @@ interface propsType {
 }
 
 const colors = [
-  "#fffe34",
   "#fb9902",
   "#ff2713",
   "#a6194a",
@@ -18,7 +17,8 @@ const colors = [
   "#0346fe",
   "#0292cf",
   "#66b033",
-  "#d1e82b"
+  "#d1e82b",
+  "#fffe34",
 ];
 
 const PieChart: FC<propsType> = ({ data, total }): JSX.Element => {
@@ -36,7 +36,7 @@ const PieChart: FC<propsType> = ({ data, total }): JSX.Element => {
         className="h-[15rem] w-[15rem] rounded-full grid p-7 shadow-inner"
         style={{ backgroundImage: conicGradient }}
       >
-        <div className="bg-white rounded-full flex flex-col items-center justify-center text-xl font-semibold text-slate-500 shadow-lg">
+        <div className="bg-white rounded-full flex flex-col items-center justify-center text-xl font-semibold text-slate-500 shadow-xl">
           <span>Event</span>
           <span>Participation</span>
         </div>
