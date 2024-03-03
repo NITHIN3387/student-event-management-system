@@ -19,7 +19,7 @@ const UserProfileCapsule: FC = () => {
 
     if (!authUser?.SID) {
       setName(authUser?.FNAME);
-      authUser?.HOD
+      authUser?.HOD === "true"
         ? setDesignation("Head of Department")
         : setDesignation("Faculty");
     }
