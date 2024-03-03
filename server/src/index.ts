@@ -12,6 +12,7 @@ import pendingAttendenceRouter from "./routes/pendingAttendence.route"
 import enrollRouter from "./routes/enroll.route"
 import attendenceRouter from "./routes/attendence.route"
 import marksRouter from "./routes/marks.router"
+import facMarkrouter from "./routes/fac.marks.route";
 
 const app = express();
 dotenv.config()
@@ -37,6 +38,7 @@ app.use("/pending-attendence", pendingAttendenceRouter)
 app.use("/enroll", enrollRouter)
 app.use("/attendence", attendenceRouter)
 app.use("/marks", marksRouter)
+app.use("/faculty/Marks",facMarkrouter)
 
 const PORT: string = process.env.PORT || "4000";
 
