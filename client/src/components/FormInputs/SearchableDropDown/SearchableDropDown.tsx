@@ -12,6 +12,7 @@ import React, {
 interface propsType {
   label?: string;
   placeholder?: string;
+  type?: string;
   setValue?: Dispatch<SetStateAction<any>>;
   emptyValue?: boolean;
   setEmptyValue?: Dispatch<SetStateAction<boolean>>;
@@ -24,6 +25,7 @@ interface propsType {
 const SearchableDropDown: FC<propsType> = ({
   label,
   placeholder,
+  type,
   setValue,
   emptyValue,
   setEmptyValue,
@@ -79,7 +81,7 @@ const SearchableDropDown: FC<propsType> = ({
     <div className="grid gap-1 relative">
       <label htmlFor={label}>{label}:</label>
       <input
-        type="text"
+        type={type ? type : "text"}
         id={label}
         className={
           (emptyValue ? "border-red-500 text-red-500" : "border-slate-300") +
