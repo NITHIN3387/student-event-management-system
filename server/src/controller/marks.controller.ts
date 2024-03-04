@@ -21,7 +21,7 @@ const getMarksOfAuthUser: RequestHandler = async (req, res) => {
   })
 }
 
-const getMarksSemSecSub: RequestHandler = async (req, res) => {
+const getMarksBySemSecSub: RequestHandler = async (req, res) => {
   const { sem, sec, sub } = req.params
 
   const query = `
@@ -62,4 +62,4 @@ const updateMarksOfStudentById: RequestHandler = async (req, res) => {
   })
 }
 
-export { getMarksOfAuthUser, getMarksSemSecSub, updateMarksOfStudentById }
+export { getMarksOfAuthUser, getMarksBySemSecSub, updateMarksOfStudentById }
