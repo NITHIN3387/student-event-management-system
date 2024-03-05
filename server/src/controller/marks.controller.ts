@@ -41,6 +41,26 @@ const getMarksBySemSecSub: RequestHandler = async (req, res) => {
   })
 }
 
+const getMarksBySid: RequestHandler = async (req, res) => {
+  const SID = req.params.sid
+
+  const query = `
+    SELECT *
+    FROM MARKS M, SUBJECT S
+    WHERE M.SUBID = S.SUBID AND M.SID = '${SID}'
+  `
+
+  dbConnection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }
+
+    res.status(200).json(result);
+  })
+}
+
 const updateMarksOfStudentById: RequestHandler = async (req, res) => {
   const SID = req.params.sid
   const { IA1, IA2, IA3, ASSIGNMENT } = req.body
@@ -62,4 +82,4 @@ const updateMarksOfStudentById: RequestHandler = async (req, res) => {
   })
 }
 
-export { getMarksOfAuthUser, getMarksBySemSecSub, updateMarksOfStudentById }
+export { getMarksOfAuthUser, getMarksBySemSecSub, updateMarksOfStudentById, getMarksBySid }

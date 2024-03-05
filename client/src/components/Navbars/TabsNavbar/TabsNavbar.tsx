@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import React, { FC, useEffect, useState } from 'react'
 
 interface propsType {
-  navList?: {
+  navList: {
     label: string;
     link: string;
   }[];

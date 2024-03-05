@@ -21,6 +21,26 @@ const getAttendenceOfAuthUser: RequestHandler = async (req, res) => {
   })
 }
 
+const getAttendenceBySid: RequestHandler = async (req, res) => {
+  const SID = req.params.sid
+
+  const query = `
+    SELECT *
+    FROM ATTENDENCE A, SUBJECT S
+    WHERE A.SUBID = S.SUBID AND A.SID = '${SID}'
+  `
+
+  dbConnection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }
+
+    res.status(200).json(result);
+  })
+}
+
 const getAttendenceBySemSecSub: RequestHandler = async (req, res) => {
   const { sem, sec, sub } = req.params
 
@@ -62,4 +82,4 @@ const updateAttendenceOfStudentById: RequestHandler = async (req, res) => {
   })
 }
 
-export { getAttendenceOfAuthUser, getAttendenceBySemSecSub, updateAttendenceOfStudentById }
+export { getAttendenceOfAuthUser, getAttendenceBySemSecSub, updateAttendenceOfStudentById, getAttendenceBySid }

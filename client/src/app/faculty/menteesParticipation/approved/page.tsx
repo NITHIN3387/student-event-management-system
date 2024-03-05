@@ -2,6 +2,7 @@
 
 import ApprovalParticipationCard from "@/components/Cards/ApprovalParticipationCard/ApprovalParticipationCard";
 import SearchBar from "@/components/Headers/SearchBar/SearchBar";
+import ImageViewModel from "@/components/Modals/ImageViewModel/ImageViewModel";
 import TableViewModle from "@/components/Modals/TableViewModel/TableViewModel";
 import React, { Fragment, useEffect, useState } from "react";
 
@@ -46,11 +47,13 @@ const Page = () => {
     [],
   ]);
   const [viewModel, setViewModel] = useState<boolean>(false);
+  const [viewImage, setViewImage] = useState<boolean>(false);
+  const [certificate, setCertificate] = useState<string>("");
 
   useEffect(() => {
     const fetchUserParticipateEvent = async () => {
       const URL =
-        process.env.NEXT_PUBLIC_SERVER_URL + "/participate/mentees/Pending";
+        process.env.NEXT_PUBLIC_SERVER_URL + "/participate/mentees/Approved";
 
       const responce = await fetch(URL, {
         method: "GET",
@@ -124,16 +127,20 @@ const Page = () => {
     setViewModel(true);
   };
 
+  const viewCertificate = (image: string) => {
+    setViewImage(true)
+    setCertificate(image)
+  }
+
   const handleStatus = async (pid: number, status: string) => {
-    const url =
-      process.env.NEXT_PUBLIC_SERVER_URL + "/participate/update-status";
-    const data = { pid: pid, status: status };
+    const url = process.env.NEXT_PUBLIC_SERVER_URL + "/participate/update-status";
+    const data = { pid: pid, status: status }
 
     await fetch(url, {
       method: "PUT",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     }).then((res) => res.json());
   };
 
@@ -142,30 +149,28 @@ const Page = () => {
       <SearchBar />
 
       <div className="mt-7">
-        {participateEvent.length ? (
+        {participateEvent.length ?
           participateEvent.map((event, index) => (
             <Fragment key={index}>
               <ApprovalParticipationCard
                 event={event}
                 showAttendence={showAttendence}
                 showMarks={showMarks}
+                viewImage={viewCertificate}
                 handleStatus={handleStatus}
               />
             </Fragment>
-          ))
-        ) : (
-          <h1 className="text-center text-3xl font-bold mt-7">
-            No Pending events are there by your mentees
-          </h1>
-        )}
+          )) : <h1 className='text-center text-3xl font-bold mt-7'>No Approved events are there by your mentees</h1>}
       </div>
       {viewModel && (
         <TableViewModle
           tableRowVal={tableRowVal}
           tableColVal={tableColVal}
+
           setViewModel={setViewModel}
         />
       )}
+      {viewImage && <ImageViewModel file={certificate} setViewImage={setViewImage}/>}
     </div>
   );
 };
