@@ -13,6 +13,7 @@ import enrollRouter from "./routes/enroll.route"
 import attendenceRouter from "./routes/attendence.route"
 import marksRouter from "./routes/marks.router"
 import teachesRouter from "./routes/teaches.router"
+import StudentRouter from "./routes/student.route"
 
 const app = express();
 dotenv.config()
@@ -39,6 +40,7 @@ app.use("/enroll", enrollRouter)
 app.use("/attendence", attendenceRouter)
 app.use("/marks", marksRouter)
 app.use("/teaches", teachesRouter)
+app.use("/student",StudentRouter)
 
 const PORT: string = process.env.PORT || "4000";
 
