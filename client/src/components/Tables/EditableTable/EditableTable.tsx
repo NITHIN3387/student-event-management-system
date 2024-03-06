@@ -44,8 +44,8 @@ const EditableTable: FC<propsType> = ({
   };
 
   return (
-    <table className="w-full rounded-lg overflow-hidden">
-      <thead className="bg-primary-color text-white">
+    <table className="w-full rounded-lg">
+      <thead className="bg-primary-color text-white sticky">
         <tr>
           {tableRowVal.map((item) => (
             <th className="text-left py-2 px-4 border" key={item}>

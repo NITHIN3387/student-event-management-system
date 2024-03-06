@@ -21,13 +21,33 @@ const getMarksOfAuthUser: RequestHandler = async (req, res) => {
   })
 }
 
-const getMarksSemSecSub: RequestHandler = async (req, res) => {
+const getMarksBySemSecSub: RequestHandler = async (req, res) => {
   const { sem, sec, sub } = req.params
 
   const query = `
     SELECT S.SNAME, S.SID, M.IA1,	M.IA2,M.IA3, M.ASSIGNMENT
     FROM STUDENT S, MARKS M
     WHERE S.SID = M.SID AND S.SEMESTER = '${sem}' AND S.SECTION = '${sec}' AND SUBID = '${sub}'
+  `
+
+  dbConnection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }
+
+    res.status(200).json(result);
+  })
+}
+
+const getMarksBySid: RequestHandler = async (req, res) => {
+  const SID = req.params.sid
+
+  const query = `
+    SELECT *
+    FROM MARKS M, SUBJECT S
+    WHERE M.SUBID = S.SUBID AND M.SID = '${SID}'
   `
 
   dbConnection.query(query, (error, result) => {
@@ -62,4 +82,4 @@ const updateMarksOfStudentById: RequestHandler = async (req, res) => {
   })
 }
 
-export { getMarksOfAuthUser, getMarksSemSecSub, updateMarksOfStudentById }
+export { getMarksOfAuthUser, getMarksBySemSecSub, updateMarksOfStudentById, getMarksBySid }

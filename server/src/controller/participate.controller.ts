@@ -67,6 +67,26 @@ const updateCertificate: RequestHandler = async (req, res) => {
   });
 };
 
+const updateStatus: RequestHandler = async (req, res) => {
+  const { pid, status } = req.body;
+
+  const query = `
+    UPDATE PARTICIPATE
+    SET STATUS = '${status}'
+    WHERE PID = '${pid}'
+  `;
+
+  dbConnection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }
+
+    res.status(200).json(result);
+  });
+};
+
 const getCertificateImage: RequestHandler = async (req, res) => {
   const filename = req.params.file;
   const filePath =
@@ -94,13 +114,35 @@ const deleteParticipate: RequestHandler = async (req, res) => {
 
     res.status(200).send("deleted successfully");
   });
+};
 
+const getParticipationByFacultyId: RequestHandler = async (req, res) => {
+  const user = (req as any).user;
+  const status = req.params.status
+
+  const query = `
+    SELECT *
+    FROM PARTICIPATE P, EVENTS E, STUDENT S
+    WHERE S.FID = '${user.FID}' AND P.STATUS = '${status}' AND E.EID = P.EID AND P.SID = S.SID
+  `;
+
+  dbConnection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }
+
+    res.status(200).json(result);
+  });
 };
 
 export {
   addParticipation,
   getParticipationByAuthUserId,
+  getParticipationByFacultyId,
   updateCertificate,
+  updateStatus,
   getCertificateImage,
   deleteParticipate,
 };

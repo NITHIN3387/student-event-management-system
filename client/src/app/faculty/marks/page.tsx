@@ -11,7 +11,6 @@ interface responceType {
   IA3: number;
   SID: string;
   SNAME: string;
-  USN: string;
 }
 
 const tableRowVal = ["Name", "USN", "IA-1", "IA-2", "IA-3", "Assignment"];
@@ -53,15 +52,12 @@ const Page = () => {
       ASSIGNMENT: assignment
     }
 
-    const responce = await fetch(url, {
+    await fetch(url, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
       body: JSON.stringify(data)
     }).then(res => res.json())
-
-    console.log(IA1, IA2, IA3, assignment);
-    console.log(responce);
   };
 
   return (

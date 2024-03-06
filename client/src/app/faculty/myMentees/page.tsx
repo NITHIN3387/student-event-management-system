@@ -46,13 +46,11 @@ const page :FC = ():JSX.Element => {
     fetchStudentsDetail();
   });
 
-  
-  // if(loader) return <Loader/>
-  const [semester,setSemester]=useState<number>(0);
-  const[section,setSection]=useState<string>("")
-  const[course,setCourse]=useState<string>(" ")
+  const [semester, setSemester] = useState<number>(0);
+  const [section, setSection] = useState<string>("");
+  const [course, setCourse] = useState<string>(" ");
   return (
-    <div >
+    <div className="mt-3">
       <FilterHeader
         semester={semester}
         setSemester={setSemester}
@@ -68,9 +66,8 @@ const page :FC = ():JSX.Element => {
         <AddIcon height={35} width={35}/>
         <span>Add More</span>
        </Link>
-        
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;

@@ -18,6 +18,11 @@ const navList: navListType[] = [
     link: "/faculty/dashboard",
   },
   {
+    label: "Mentees Participation",
+    icon: <MenteesIcon height={25} width={25} />,
+    link: "/faculty/menteesParticipation",
+  },
+  {
     label: "My Mentees",
     icon: <MenteesIcon height={25} width={25} />,
     link: "/faculty/myMentees",

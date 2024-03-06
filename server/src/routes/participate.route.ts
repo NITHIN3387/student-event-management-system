@@ -1,7 +1,7 @@
 import multer from "multer"
 import { Router } from "express";
 import { authUser } from "../middleware/auth.middleware";
-import { addParticipation, deleteParticipate, getCertificateImage, getParticipationByAuthUserId, updateCertificate } from "../controller/participate.controller";
+import { addParticipation, deleteParticipate, getCertificateImage, getParticipationByAuthUserId, getParticipationByFacultyId, updateCertificate, updateStatus } from "../controller/participate.controller";
 
 const router = Router();
 const storagPath = __dirname.split("/dist/routes")[0] + "/src/certificateFiles";
@@ -20,7 +20,9 @@ const upload = multer({ storage: storage })
 
 router.post("/", authUser, addParticipation)
 router.get("/", authUser, getParticipationByAuthUserId)
+router.get("/mentees/:status", authUser, getParticipationByFacultyId)
 router.put("/update-certificate", authUser, upload.single("certificate"), updateCertificate)
+router.put("/update-status", authUser, updateStatus)
 router.get("/certificate/:file", getCertificateImage)
 router.delete("/:id", authUser, deleteParticipate)
 
