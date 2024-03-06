@@ -35,6 +35,7 @@ const page :FC = ():JSX.Element => {
         responce.map((student)=>[
           student.SID,
           student.SNAME,
+          
         ])
       );
       
@@ -44,6 +45,8 @@ const page :FC = ():JSX.Element => {
     if(semester>0 && section )
     fetchStudentsDetail();
   });
+
+  
   // if(loader) return <Loader/>
   const [semester,setSemester]=useState<number>(0);
   const[section,setSection]=useState<string>("")
