@@ -42,7 +42,7 @@ const Page: FC = (): JSX.Element => {
   }
 
   return (
-    <div className="mt-3">
+    <div>
       <FilterHeader
         semester={semester}
         setSemester={setSemester}

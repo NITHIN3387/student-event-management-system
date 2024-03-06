@@ -63,12 +63,12 @@ const getAttendenceBySemSecSub: RequestHandler = async (req, res) => {
 
 const updateAttendenceOfStudentById: RequestHandler = async (req, res) => {
   const SID = req.params.sid
-  const { conducted, present } = req.body
+  const { subid, conducted, present } = req.body
 
   const query = `
     UPDATE ATTENDENCE
     SET CONDUCTED = ${conducted}, PRESENT = ${present}
-    WHERE SID = '${SID}'
+    WHERE SID = '${SID}' AND SUBID = '${subid}'
   `
 
   dbConnection.query(query, (error, result) => {
@@ -82,4 +82,25 @@ const updateAttendenceOfStudentById: RequestHandler = async (req, res) => {
   })
 }
 
-export { getAttendenceOfAuthUser, getAttendenceBySemSecSub, updateAttendenceOfStudentById, getAttendenceBySid }
+const incrementAttendenceOfStudentById: RequestHandler = async (req, res) => {
+  const { sid } = req.params
+  const { subid, count } = req.body
+
+  const query = `
+    UPDATE ATTENDENCE
+    SET PRESENT = PRESENT + ${count}
+    WHERE SID = '${sid}' AND SUBID = '${subid}
+  `
+
+  dbConnection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }
+
+    res.status(200).json(result);
+  })
+}
+
+export { getAttendenceOfAuthUser, getAttendenceBySemSecSub, updateAttendenceOfStudentById, getAttendenceBySid, incrementAttendenceOfStudentById }

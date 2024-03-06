@@ -42,6 +42,7 @@ const Page = () => {
   const handleSubmit = async (sid: string | number) => {
     const url = process.env.NEXT_PUBLIC_SERVER_URL + "/attendence/" + sid
     const data = {
+      subid: course,
       conducted,
       present
     }
