@@ -37,4 +37,23 @@ const updateMenter: RequestHandler = async (req, res) => {
     })
 }
 
-export { getMentees, updateMenter }
+const deleteMentee: RequestHandler = async (req, res) => {
+    const { sid } = req.params
+
+    const query = `
+        UPDATE STUDENT
+        SET FID = null
+        where SID ='${sid}'
+    `
+
+    dbConnection.query(query, (error, result) => {
+        if (error) {
+            result.status(500).send("internal server Error!")
+            console.log(error)
+        }
+
+        res.status(200).json(result)
+    })
+}
+
+export { getMentees, updateMenter, deleteMentee }

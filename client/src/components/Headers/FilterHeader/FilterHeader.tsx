@@ -6,8 +6,9 @@ interface propsType {
   setSemester: Dispatch<SetStateAction<number>>
   section: string;
   setSection: Dispatch<SetStateAction<string>>
-  course: string;
-  setCourse: Dispatch<SetStateAction<string>>
+  courseEntryNeeded?: boolean;
+  course?: string;
+  setCourse?: Dispatch<SetStateAction<string>>
 }
 
 interface responceType {
@@ -31,7 +32,7 @@ const semesterOptions = [
   { key: "8", value: "8" },
 ];
 
-const FilterHeader: FC<propsType> = ({ semester, setSemester, section, setSection, course, setCourse }) => {
+const FilterHeader: FC<propsType> = ({ semester, setSemester, section, setSection, courseEntryNeeded = true, course, setCourse }) => {
   const [sectionOptions, setSectionOptions] = useState<{key: string, value: string}[]>([])
   const [courseOptions, setCourseOptions] = useState<{key: string, value: string}[]>([])
 
@@ -54,15 +55,15 @@ const FilterHeader: FC<propsType> = ({ semester, setSemester, section, setSectio
         ))
       ))
 
-      setCourseOptions(() => (
+      {courseEntryNeeded && setCourseOptions(() => (
         responce.map((item) => (
           { key: item.SUBNAME, value: item.SUBID }
         ))
-      ))
+      ))}
     }
 
     fetchClassTeachesByUser()
-  }, [])
+  }, [courseEntryNeeded])
 
   const handleApply: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault()
@@ -74,16 +75,14 @@ const FilterHeader: FC<propsType> = ({ semester, setSemester, section, setSectio
       setEmptySection(true)
       return
     }
-    if(!course.length) {
+    if(!course?.length) {
       setEmptyCourse(true)
       return
     }
-
-    console.log(semester, section, course);
   }
 
   return (
-    <form className="bg-white rounded-md grid grid-cols-[1fr_1fr_1fr_auto] gap-7 p-5 pb-0" onSubmit={handleApply}>
+    <form className={`bg-white rounded-md grid ${courseEntryNeeded ? "grid-cols-[1fr_1fr_1fr_auto]" : "grid-cols-[1fr_1fr_auto]"} gap-7 p-5 pb-0`} onSubmit={handleApply}>
       <SearchableDropDown
         label="Semester"
         options={semesterOptions}
@@ -103,14 +102,16 @@ const FilterHeader: FC<propsType> = ({ semester, setSemester, section, setSectio
         setEmptyValue={setEmptySection}
       />
 
-      <SearchableDropDown
-        label="Course"
-        options={courseOptions}
-        placeholder="Select the Course here"
-        setValue={setCourse}
-        emptyValue={emptyCourse}
-        setEmptyValue={setEmptyCourse}
-      />
+      {courseEntryNeeded &&
+        <SearchableDropDown
+          label="Course"
+          options={courseOptions}
+          placeholder="Select the Course here"
+          setValue={setCourse}
+          emptyValue={emptyCourse}
+          setEmptyValue={setEmptyCourse}
+        />
+      }
       <div className="grid">
         <label className="opacity-0">.</label>
         <button
