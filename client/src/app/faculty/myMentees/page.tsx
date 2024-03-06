@@ -3,6 +3,8 @@ import React,{FC,useState,useEffect} from 'react'
 import Loader from '@/components/Loaders/Loader/Loader';
 import FilterHeader from '@/components/Headers/FilterHeader/FilterHeader'
 import Table from '@/components/Tables/Table/Table';
+import Link from 'next/link';
+import AddIcon from '@/assets/icons/AddIcone';
 interface ResponseType{
   SID:string;
   SNAME:string;
@@ -10,10 +12,11 @@ interface ResponseType{
 const tableRowVal=[
   "Student USN",
   "Student Name",
-
+  'Action',
 ];
 
 const page :FC = ():JSX.Element => {
+
   const[tableColVal,setTableColVal]=useState<Array<Array<string|number>>>(
     [[]]
   );
@@ -48,15 +51,21 @@ const page :FC = ():JSX.Element => {
   return (
     <div >
       <FilterHeader
-      semester={semester}
-      setSemester={setSemester}
-      section={section}
-      setSection={setSection}
-      course={course}
-      setCourse={setCourse}/>
+        semester={semester}
+        setSemester={setSemester}
+        section={section}
+        setSection={setSection}
+        course={course}
+        setCourse={setCourse}
+      />
       <div className='mt-3'>
         <Table tableRowVal={tableRowVal} tableColVal={tableColVal}/>
         </div>
+       <Link href="/faculty/myMentees/AddMyMentees" className='flex fixed bottom-4 right-4 p-1 items-center gap-2 bg-primary-color text-white font-semibold px-2 py-1 rounded-lg'>
+        <AddIcon height={35} width={35}/>
+        <span>Add More</span>
+       </Link>
+        
     </div>
   )
 }
