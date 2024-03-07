@@ -40,6 +40,7 @@ interface marksResponceType {
 }
 
 const Page = () => {
+  const [search, setSearch] = useState<string>("");
   const [participateEvent, setParticipateEvent] = useState<eventType[]>([]);
   const [tableRowVal, setTableRowVal] = useState<string[]>([]);
   const [tableColVal, setTableColVal] = useState<Array<string | number>[]>([
@@ -52,12 +53,16 @@ const Page = () => {
       const URL =
         process.env.NEXT_PUBLIC_SERVER_URL + "/participate/mentees/Pending";
 
-      const responce = await fetch(URL, {
+      const responce: eventType[] = await fetch(URL, {
         method: "GET",
         credentials: "include",
       }).then((res) => res.json());
 
-      setParticipateEvent(responce);
+      setParticipateEvent(
+        responce.filter((event) =>
+          event.SID.toLowerCase().includes(search.toLowerCase())
+        )
+      );
     };
 
     fetchUserParticipateEvent();
@@ -139,7 +144,7 @@ const Page = () => {
 
   return (
     <div className="mt-7">
-      <SearchBar />
+      <SearchBar setSearch={setSearch} />
 
       <div className="mt-7">
         {participateEvent.length ? (
@@ -153,6 +158,10 @@ const Page = () => {
               />
             </Fragment>
           ))
+        ) : search.length ? (
+          <h1 className="text-center text-3xl font-bold mt-7">
+            No Participation Found
+          </h1>
         ) : (
           <h1 className="text-center text-3xl font-bold mt-7">
             No Pending events are there by your mentees

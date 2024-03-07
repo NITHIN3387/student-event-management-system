@@ -41,6 +41,7 @@ interface marksResponceType {
 }
 
 const Page = () => {
+  const [search, setSearch] = useState<string>("")
   const [participateEvent, setParticipateEvent] = useState<eventType[]>([]);
   const [tableRowVal, setTableRowVal] = useState<string[]>([]);
   const [tableColVal, setTableColVal] = useState<Array<string | number>[]>([
@@ -55,12 +56,12 @@ const Page = () => {
       const URL =
         process.env.NEXT_PUBLIC_SERVER_URL + "/participate/mentees/Approved";
 
-      const responce = await fetch(URL, {
+      const responce: eventType[] = await fetch(URL, {
         method: "GET",
         credentials: "include",
       }).then((res) => res.json());
 
-      setParticipateEvent(responce);
+      setParticipateEvent(responce.filter(event => event.SID.toLowerCase().includes(search.toLowerCase())));
     };
 
     fetchUserParticipateEvent();
@@ -146,7 +147,7 @@ const Page = () => {
 
   return (
     <div className="mt-7">
-      <SearchBar />
+      <SearchBar setSearch={setSearch}/>
 
       <div className="mt-7">
         {participateEvent.length ?
