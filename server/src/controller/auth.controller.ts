@@ -98,6 +98,12 @@ const getAuthUser: RequestHandler = async (req, res) => {
   res.status(200).json(user)
 }
 
+const userLogout: RequestHandler = (req, res) => {
+  res.clearCookie('token')
+  .status(200)
+  .send({message: 'user logged out successfully'})
+}
+
 /*
   method: GET,
   access: public,
@@ -152,4 +158,4 @@ const getFacultyById: RequestHandler = async (req, res) => {
   })
 }
 
-export { userLogin, getStudentById, getFacultyById, getAuthUser };
+export { userLogin, getStudentById, getFacultyById, getAuthUser, userLogout };
