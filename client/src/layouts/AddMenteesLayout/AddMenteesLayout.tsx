@@ -11,7 +11,6 @@ const AddMyMenteesLayout:FC<propsType>=({children}):JSX.Element=>{
             {children}
         <div className="bg-white h-full rounded-lg p-4 overflow-scroll">
             <AddMenteesForm/>
-
         </div>
 
         </div>

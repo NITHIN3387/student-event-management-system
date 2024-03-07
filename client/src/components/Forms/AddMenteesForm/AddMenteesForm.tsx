@@ -1,8 +1,8 @@
 "use client"
 
-import InputBox from "@/components/FormInputs/InputBox/InputBox"
+import SearchableDropDown from "@/components/FormInputs/SearchableDropDown/SearchableDropDown";
 import { useRouter } from "next/navigation";
-import React,{FC,FormEventHandler,MouseEventHandler,useEffect,useState,} from "react";
+import React,{FC,FormEventHandler,useEffect,useState,} from "react";
 
 const AddMenteesForm:FC=():JSX.Element=>{
     const router = useRouter()
@@ -10,6 +10,20 @@ const AddMenteesForm:FC=():JSX.Element=>{
     const [loading, setLoading] = useState<boolean>(false);
     const[sid,setSid]=useState<string>("");
     const[emptySid,setEmptySid]=useState<boolean>(false);
+    const [studentList, setStudentList] = useState<{ key: string, value: string }[]>([])
+
+    useEffect(() => {
+      const fetchAllStudents = async () => {
+        const url = process.env.NEXT_PUBLIC_SERVER_URL + "/student"
+        const responce: { SID: string }[] = await fetch(url).then(res => res.json())        
+
+        setStudentList(() => responce.map(student => ({
+          key: student.SID, value: student.SID
+        })))
+      }
+
+      fetchAllStudents()
+    }, [])
 
     const handleUpdateMentees: FormEventHandler<HTMLFormElement> = async (event) => {
       event.preventDefault()
@@ -36,9 +50,9 @@ const AddMenteesForm:FC=():JSX.Element=>{
 
     return (
         <form onSubmit={handleUpdateMentees}>
-          <InputBox 
+          <SearchableDropDown
             label="Student ID"
-            value={sid}
+            options={studentList}
             setValue={setSid}
             emptyValue={emptySid}
             setEmptyValue={setEmptySid}
