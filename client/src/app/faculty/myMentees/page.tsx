@@ -65,7 +65,7 @@ const Page: FC = (): JSX.Element => {
         className="flex fixed bottom-4 right-4 p-1 items-center gap-2 bg-primary-color text-white font-semibold px-2 py-1 rounded-lg"
       >
         <AddIcon height={35} width={35} />
-        <span>Add More</span>
+        <span>Add Mentee</span>
       </Link>
     </div>
   );

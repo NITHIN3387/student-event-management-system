@@ -1,5 +1,6 @@
 import AttendenceIcon from "@/assets/icons/AttendenceIcon";
 import Dashboard from "@/assets/icons/Dashboard";
+import GrantAttendenceIcon from "@/assets/icons/GrantAttendenceIcon";
 import MarksIcon from "@/assets/icons/MarksIcon";
 import MenteesIcon from "@/assets/icons/MenteesIcon";
 import MyParticipationIcon from "@/assets/icons/myParticipationIcon";
@@ -19,7 +20,7 @@ const navList: navListType[] = [
   },
   {
     label: "Mentees Participation",
-    icon: <MenteesIcon height={25} width={25} />,
+    icon: <MyParticipationIcon height={25} width={25} />,
     link: "/faculty/menteesParticipation",
   },
   {
@@ -29,7 +30,7 @@ const navList: navListType[] = [
   },
   {
     label: "Grant Attendence",
-    icon: <MenteesIcon height={25} width={25} />,
+    icon: <GrantAttendenceIcon height={25} width={25} />,
     link: "/faculty/grantAttendence",
   },
   {

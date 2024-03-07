@@ -7,6 +7,7 @@ import DateIcon from "@/assets/icons/DateIcon";
 import UpdateCertificateModel from "@/components/Modals/UpdateCertificateModel/UpdateCertificateModel";
 import ImageViewModel from "@/components/Modals/ImageViewModel/ImageViewModel";
 import { useRouter } from "next/navigation";
+import ApprovedIcon from "@/assets/icons/ApprovedIcon";
 
 interface propsType {
   event: {
@@ -51,8 +52,11 @@ const ParticipationCard: FC<propsType> = ({ event }): JSX.Element => {
             {`(${event.ETYPE})`}
           </span>
         </h1>
-        <div className="flex items-center gap-1 text-[0.85em] border px-2 py-1 rounded-s-full rounded-e-full border-slate-500 text-slate-500">
-          <PendingLogo height={15} width={15} />
+        <div className={`
+          flex items-center gap-1 text-[0.85em] border px-2 py-1 rounded-s-full rounded-e-full
+          ${event.STATUS === "Pending" ? 'border-slate-500 text-slate-500' : event.STATUS == 'Approved' ? 'border-yellow-500 text-yellow-500' : 'border-green-500 text-green-500' }`}>
+          {event.STATUS === "Pending" && <PendingLogo height={15} width={15} />}
+          {event.STATUS !== "Pending" && <ApprovedIcon height={15} width={15} />}
           <span>{event.STATUS}</span>
         </div>
       </div>
