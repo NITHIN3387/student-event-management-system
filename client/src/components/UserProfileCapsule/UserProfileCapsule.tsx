@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/authUser.context";
 import { useRouter } from "next/navigation";
 import LogoutIcon from "@/assets/icons/LogoutIcon";
 import PasswordIcon from "@/assets/icons/PasswordIcon";
+import ChangePasswordModel from "../Modals/ChangePasswordModel/ChangePasswordModel";
 
 const UserProfileCapsule: FC = () => {
   const authUser = useAuth();
@@ -14,6 +15,7 @@ const UserProfileCapsule: FC = () => {
 
   const [name, setName] = useState<string | undefined>("");
   const [designation, setDesignation] = useState<string>("");
+  const [openModel, setOpenModel] = useState<boolean>(false)
   const [showMoreOption, setShowMoreOption] = useState<boolean>(false)
 
   useEffect(() => {    
@@ -44,11 +46,11 @@ const UserProfileCapsule: FC = () => {
   return (
     <div className="flex items-center pl-2 pr-4 py-1 rounded-full border border-gray-500 cursor-pointer relative" onClick={() => setShowMoreOption((pre) => !pre)}>
       <div className={`${showMoreOption ? "grid items-center" : "hidden"} absolute top-14 right-0 bg-white rounded-md border w-[12rem] shadow-md`} onMouseLeave={() => setShowMoreOption(false)}>
-        {/* <button className="p-2 hover:bg-slate-200 text-left grid grid-cols-[auto_1fr] gap-3 text-blue-500">
+        <button className="p-2 hover:bg-slate-200 text-left grid grid-cols-[auto_1fr] gap-3 text-blue-500" onClick={() => setOpenModel(true)}>
           <PasswordIcon width={25} height={25}/>
           <span>Change Password</span>
         </button>
-        <hr /> */}
+        <hr />
         <button className="p-2 hover:bg-slate-200 text-left grid grid-cols-[auto_1fr] gap-3 text-red-500" onClick={handleLogout}>
           <LogoutIcon width={25} height={25}/>
           <span>Log Out</span>
@@ -67,6 +69,8 @@ const UserProfileCapsule: FC = () => {
         <span className="font-bold block">{name}</span>
         <span className="text-xs text-gray-500 hover:text-gray-700 block">{designation}</span>
       </div>
+
+      {openModel &&  <ChangePasswordModel setOpenModel={setOpenModel}/>}
     </div>
   );
 };

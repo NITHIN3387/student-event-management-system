@@ -88,7 +88,8 @@ const LoginForm: FC = (): JSX.Element => {
         // checking whether the login user is a faculty or student
         registerNumber.startsWith("4SF")
           ? router.replace("/student/dashboard")
-          : router.replace("/faculty/dashboard");
+          // : router.replace("/faculty/dashboard");
+          : router.replace("/faculty/menteesParticipation");
     }
   };
 

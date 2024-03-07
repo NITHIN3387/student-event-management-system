@@ -13,11 +13,11 @@ interface navListType {
 }
 
 const navList: navListType[] = [
-  {
-    label: "Dashboard",
-    icon: <Dashboard height={25} width={25} />,
-    link: "/faculty/dashboard",
-  },
+  // {
+  //   label: "Dashboard",
+  //   icon: <Dashboard height={25} width={25} />,
+  //   link: "/faculty/dashboard",
+  // },
   {
     label: "Mentees Participation",
     icon: <MyParticipationIcon height={25} width={25} />,

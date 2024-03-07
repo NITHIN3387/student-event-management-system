@@ -57,9 +57,7 @@ const authUser: RequestHandler = async (req, res, next) => {
       res.status(401).send("unauthorized user")
       return
     }
-
-    delete user['PASSWORD'];
-
+    
     (req as any).user = user
     next()
   });

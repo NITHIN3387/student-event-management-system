@@ -158,4 +158,38 @@ const getFacultyById: RequestHandler = async (req, res) => {
   })
 }
 
-export { userLogin, getStudentById, getFacultyById, getAuthUser, userLogout };
+const changePassword: RequestHandler = async (req, res) => {
+  const user = (req as any).user
+  const { oldPassword, newPassword } = req.body  
+
+  if (user.PASSWORD !== oldPassword) {
+    res.status(401).send("invalid Password")
+    return
+  }
+
+  const query: string =
+  user.SID ? 
+  `
+    UPDATE STUDENT
+    SET PASSWORD = '${newPassword}'
+    WHERE SID = '${user.SID}'
+  `:
+  `
+    UPDATE FACULTY
+    SET PASSWORD = '${newPassword}'
+    WHERE FID = '${user.FID}'
+  `
+
+
+  dbConnection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).send("internal server error");
+      console.log(error);
+      return;
+    }
+
+    else res.status(200).json(result)
+  })
+}
+
+export { userLogin, getStudentById, getFacultyById, getAuthUser, userLogout, changePassword };
