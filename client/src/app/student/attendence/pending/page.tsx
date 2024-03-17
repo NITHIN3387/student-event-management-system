@@ -48,7 +48,10 @@ const Page: FC = (): JSX.Element => {
 
   return (
     <div className="mt-7 h-[30rem] overflow-scroll">
-      <TableWithSubRow tableRowVal={tableRowVal} tableColVal={tableColVal} />
+      {tableColVal.length ? 
+        <TableWithSubRow tableRowVal={tableRowVal} tableColVal={tableColVal} />
+        : <h1 className="text-center text-3xl font-bold mt-7"> No Pending Attendence </h1>
+      }
     </div>
   );
 };

@@ -146,7 +146,7 @@ const Page = () => {
     <div className="mt-7">
       <SearchBar setSearch={setSearch} />
 
-      <div className="mt-7">
+      <div className="mt-7 grid gap-7">
         {participateEvent.length ? (
           participateEvent.map((event, index) => (
             <Fragment key={index}>

@@ -39,8 +39,6 @@ const MyParticipationLayout: FC<propsType> = ({
         credentials: "include",
       }).then((res) => res.json());
 
-      console.log(responce);
-
       setParticipateEvent(
         responce.filter((events) => events.ENAME.toLowerCase().includes(search.toLowerCase()))
       );

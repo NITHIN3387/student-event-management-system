@@ -25,7 +25,7 @@ const getPendingAttendenceOfAuthUser: RequestHandler = async (req, res) => {
   const user = (req as any).user;
 
   const query = `
-    SELECT ENAME, START_DATE, SUBNAME, COUNT, PID, SUBID
+    SELECT ENAME, START_DATE, SUBNAME, COUNT, P.PID, S.SUBID
     FROM PENDING_ATTENDENCE PA, PARTICIPATE P, EVENTS E, SUBJECT S
     WHERE PA.SUBID = S.SUBID AND PA.PID = P.PID AND P.EID = E.EID AND SID = '${user.SID}' AND P.STATUS = 'Varified'
   `;

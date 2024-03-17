@@ -32,7 +32,7 @@ const Page: FC = (): JSX.Element => {
     { color: "#1976D2", heading: "Events", subheading: "Applied", count: 0 },
     { color: "#757575", heading: "Pending", subheading: "Events", count: 0 },
     { color: "#FFD600", heading: "Approved", subheading: "Events", count: 0 },
-    { color: "#4CAF50", heading: "Verified", subheading: "Events", count: 0 },
+    { color: "#4CAF50", heading: "Varified", subheading: "Events", count: 0 },
   ])
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const Page: FC = (): JSX.Element => {
           Events: responce.length,
           Pending: 0,
           Approved: 0,
-          Verified: 0
+          Varified: 0
         }
 
         responce.forEach((ele) => count[ele.STATUS] += 1)
