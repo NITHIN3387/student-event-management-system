@@ -93,6 +93,10 @@ const getCertificateImage: RequestHandler = async (req, res) => {
     __dirname.split("/dist/controller")[0] +
     "/src/certificateFiles/" +
     filename;
+  // const filePath =
+  //   __dirname.split("\\dist\\controller")[0] +
+  //   "\\src\\ertificateFiles\\" +
+  //   filename;
 
   res.sendFile(filePath);
 };

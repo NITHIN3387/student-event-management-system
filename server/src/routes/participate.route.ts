@@ -5,6 +5,7 @@ import { addParticipation, deleteParticipate, getCertificateImage, getParticipat
 
 const router = Router();
 const storagPath = __dirname.split("/dist/routes")[0] + "/src/certificateFiles";
+// const storagPath = __dirname.split("\\dist\\routes")[0] + "\\src\\certificateFiles";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
